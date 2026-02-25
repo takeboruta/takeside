@@ -130,9 +130,16 @@ body {
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   text-decoration: none;
   color: inherit;
+}
+
+.logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .logo-mark {
@@ -1126,6 +1133,13 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.footer-logo-img {
+  height: 28px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .footer-logo-text {

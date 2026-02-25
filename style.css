@@ -6,21 +6,21 @@
 }
 
 :root {
-  --bg-primary: #0a0e1a;
-  --bg-secondary: #111827;
-  --bg-card: #1e293b;
-  --bg-card-hover: #263348;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --accent-blue: #38bdf8;
-  --accent-purple: #818cf8;
-  --accent-blue-dark: #2563eb;
-  --accent-purple-dark: #7c3aed;
-  --border: rgba(255,255,255,0.08);
-  --border-accent: rgba(56,189,248,0.3);
-  --gradient: linear-gradient(135deg, #38bdf8, #818cf8);
-  --shadow-card: 0 4px 24px rgba(0,0,0,0.4);
+  --bg-primary: #ffffff;
+  --bg-secondary: #eef2f7;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --accent-blue: #2563eb;
+  --accent-purple: #7c3aed;
+  --accent-blue-dark: #1d4ed8;
+  --accent-purple-dark: #6d28d9;
+  --border: rgba(0,0,0,0.08);
+  --border-accent: rgba(37,99,235,0.25);
+  --gradient: linear-gradient(135deg, #2563eb, #7c3aed);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.08);
   --radius: 12px;
   --radius-sm: 8px;
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -277,8 +277,8 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
 }

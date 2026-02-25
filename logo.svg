@@ -1,22 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" fill="none">
   <!-- Left node -->
-  <rect x="0" y="20" width="40" height="40" rx="6" fill="#2563EB"/>
+  <rect x="0" y="20" width="40" height="40" rx="6" fill="#3B5E8F"/>
   <!-- Right node -->
-  <rect x="240" y="20" width="40" height="40" rx="6" fill="#7C3AED"/>
+  <rect x="240" y="20" width="40" height="40" rx="6" fill="#6282B2"/>
   <!-- Bridge/connector line -->
   <line x1="40" y1="40" x2="240" y2="40" stroke="url(#bridgeGrad)" stroke-width="2.5"/>
   <!-- Arrow dots on bridge -->
-  <circle cx="100" cy="40" r="3" fill="#38BDF8"/>
-  <circle cx="140" cy="40" r="3" fill="#818CF8"/>
-  <circle cx="180" cy="40" r="3" fill="#38BDF8"/>
+  <circle cx="100" cy="40" r="3" fill="#89A6CF"/>
+  <circle cx="140" cy="40" r="3" fill="#4E6F9F"/>
+  <circle cx="180" cy="40" r="3" fill="#89A6CF"/>
   <!-- T letter -->
   <text x="20" y="47" text-anchor="middle" fill="white" font-size="22" font-weight="800" font-family="system-ui, sans-serif">T</text>
   <!-- S letter -->
   <text x="260" y="47" text-anchor="middle" fill="white" font-size="22" font-weight="800" font-family="system-ui, sans-serif">S</text>
   <defs>
     <linearGradient id="bridgeGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#38BDF8"/>
-      <stop offset="100%" stop-color="#818CF8"/>
+      <stop offset="0%" stop-color="#3B5E8F"/>
+      <stop offset="100%" stop-color="#6282B2"/>
     </linearGradient>
   </defs>
 </svg>

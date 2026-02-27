@@ -12,12 +12,15 @@
 </head>
 <body>
 
-  <!-- ナビゲーション -->
+  <!-- トップバー（ダークネイビー） -->
+  <div class="top-bar"></div>
+
+  <!-- ヘッダー -->
   <header class="header" id="header">
     <nav class="nav container">
       <a href="#top" class="nav-logo">
         <img src="logo.svg" alt="TAKESIDE" class="logo-img">
-        <span class="logo-sub">株式会社</span>
+        <span class="logo-text">テイクサイド</span>
       </a>
       <button class="nav-toggle" id="navToggle" aria-label="メニュー">
         <span></span><span></span><span></span>
@@ -35,27 +38,17 @@
   <!-- ヒーロー -->
   <section class="hero" id="top">
     <div class="hero-bg">
-      <div class="hero-grid"></div>
-      <div class="hero-glow hero-glow-1"></div>
-      <div class="hero-glow hero-glow-2"></div>
+      <div class="hero-noise"></div>
     </div>
     <div class="container hero-content">
-      <div class="hero-badge fade-in">ITコンサル × AI駆動開発</div>
       <h1 class="hero-title fade-in">
         分断をなくし、<br>
-        <span class="gradient-text">意思決定と実装</span>をつなぐ
+        意思決定と実装をつなぐ
       </h1>
       <p class="hero-desc fade-in">
         提案〜運用改善まで伴走。<br>
         判断を止めず、改善サイクルに接続します。
       </p>
-      <div class="hero-cta fade-in">
-        <a href="#contact" class="btn btn-primary">まずは無料ヒアリング</a>
-        <a href="#pain" class="btn btn-ghost">課題を見る</a>
-      </div>
-    </div>
-    <div class="hero-scroll">
-      <span></span>
     </div>
   </section>
 
@@ -119,7 +112,7 @@
   <section class="section section-dark" id="value">
     <div class="container">
       <div class="section-label fade-in">Why</div>
-      <h2 class="section-title fade-in">分断をなくし、<br><span class="gradient-text">意思決定と実装</span>をつなぐ</h2>
+      <h2 class="section-title fade-in">分断をなくし、<br>意思決定と実装をつなぐ</h2>
       <p class="section-sub fade-in">
         目的と前提を揃え、優先度を決め、タスクに落とす。<br>
         そこから実装・運用・改善が回る状態まで伴走します。
@@ -259,7 +252,7 @@
     </div>
   </section>
 
-  <!-- Services: サービス -->
+  <!-- Services: 事業内容 -->
   <section class="section" id="services">
     <div class="container">
       <div class="section-label fade-in">What</div>
@@ -308,7 +301,6 @@
         </div>
       </div>
 
-      <!-- 対応領域 -->
       <div class="domains fade-in">
         <h3 class="domains-title">対応領域</h3>
         <div class="domain-tags">
@@ -324,7 +316,7 @@
     </div>
   </section>
 
-  <!-- Results: 実績 (placeholder) -->
+  <!-- Results: 実績 -->
   <section class="section section-dark" id="results">
     <div class="container">
       <div class="section-label fade-in">Results</div>
@@ -350,24 +342,6 @@
           <p>立ち上げ期の人員計画、コストコントロール、進め方の設計と伴走。</p>
           <div class="result-metric">人員・コスト・進め方</div>
         </div>
-        <div class="result-card">
-          <div class="result-category">PJT進行改善</div>
-          <h3>ステークホルダー・ベンダー調整</h3>
-          <p>関係者間の認識合わせと進捗・リスクの可視化で、進行を安定化。</p>
-          <div class="result-metric">意思疎通・リードタイム改善</div>
-        </div>
-        <div class="result-card">
-          <div class="result-category">システム運用改善</div>
-          <h3>PDCAサイクルの再設計</h3>
-          <p>運用の見える化と振り返りサイクルの設計・定着支援。</p>
-          <div class="result-metric">運用品質・継続改善</div>
-        </div>
-        <div class="result-card">
-          <div class="result-category">情報システム部門の運用整備</div>
-          <h3>運用改善の実行支援</h3>
-          <p>社内ルール・手順・体制の整備と、改善活動の伴走。</p>
-          <div class="result-metric">社内運用の標準化</div>
-        </div>
       </div>
     </div>
   </section>
@@ -376,12 +350,12 @@
   <section class="section" id="ai">
     <div class="container">
       <div class="section-label fade-in">AI × 意思決定</div>
-      <h2 class="section-title fade-in">AIで<span class="gradient-text">"判断が進む状態"</span>をつくる</h2>
+      <h2 class="section-title fade-in">AIで"判断が進む状態"をつくる</h2>
       <p class="section-sub fade-in">AIは主役ではなく、意思決定を前に進める道具です</p>
 
       <div class="ai-cards fade-in">
         <div class="ai-card">
-          <div class="ai-num gradient-text">整理</div>
+          <div class="ai-num">整理</div>
           <h3>情報・論点・前提を揃える</h3>
           <p>散在する情報を構造化し、議論の出発点を明確にします。</p>
         </div>
@@ -389,7 +363,7 @@
           <div class="ai-arrow">→</div>
         </div>
         <div class="ai-card">
-          <div class="ai-num gradient-text">比較</div>
+          <div class="ai-num">比較</div>
           <h3>選択肢・リスク・コストを並べる</h3>
           <p>判断に必要な軸を整理し、意思決定者が選べる状態をつくります。</p>
         </div>
@@ -397,7 +371,7 @@
           <div class="ai-arrow">→</div>
         </div>
         <div class="ai-card">
-          <div class="ai-num gradient-text">実行</div>
+          <div class="ai-num">実行</div>
           <h3>決めたことをタスク化し運用へ</h3>
           <p>決定事項を具体的なタスクに落とし、実行できる状態へ橋渡しします。</p>
         </div>
@@ -407,11 +381,8 @@
 
   <!-- CTA / Contact -->
   <section class="section section-cta" id="contact">
-    <div class="cta-bg">
-      <div class="cta-glow"></div>
-    </div>
     <div class="container cta-content">
-      <div class="section-label fade-in" style="color: #2a4a73;">Next Step</div>
+      <div class="section-label fade-in">Next Step</div>
       <h2 class="section-title fade-in">
         まずは現状ヒアリング（60分）から
       </h2>

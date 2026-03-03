@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="テイクサイド株式会社 — 分断をなくし、意思決定と実装をつなぐ。構想立案から運用改善まで伴走するITコンサル・AI駆動開発支援。">
+  <meta name="description" content="テイクサイド株式会社 — Digital Realizer. AI・Web・Mobileの最新技術を駆使し、ビジネスの構想を「動くシステム」へ最短距離で導く。">
   <title>テイクサイド株式会社 | Takeside Inc.</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
 </head>
 <body>
 
-  <!-- トップバー（ダークネイビー） -->
+  <!-- トップバー -->
   <div class="top-bar"></div>
 
   <!-- ヘッダー -->
@@ -27,10 +27,11 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#pain">課題</a></li>
-        <li><a href="#value">提供価値</a></li>
         <li><a href="#services">サービス</a></li>
-        <li><a href="#ai">AI活用</a></li>
+        <li><a href="#works">実績</a></li>
+        <li><a href="#tech">技術スタック</a></li>
+        <li><a href="#why">強み</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
       </ul>
     </nav>
   </header>
@@ -41,397 +42,238 @@
       <div class="hero-noise"></div>
     </div>
     <div class="container hero-content">
+      <div class="hero-eyebrow fade-in">Digital Realizer</div>
       <h1 class="hero-title fade-in">
-        分断をなくし、<br>
-        意思決定と実装をつなぐ
+        構想を、動くシステムへ。<br>
+        最短距離で。
       </h1>
       <p class="hero-desc fade-in">
-        提案〜運用改善まで伴走。<br>
-        判断を止めず、改善サイクルに接続します。
+        AI・Web・Mobileの最新技術を駆使し、<br>
+        ビジネスの構想を「実際に動くプロダクト」へ変換する。<br>
+        構想だけで終わらせない、テイクサイドのスタイル。
       </p>
     </div>
   </section>
 
-  <!-- Pain: 課題 -->
-  <section class="section" id="pain">
-    <div class="container">
-      <div class="section-label fade-in">Pain</div>
-      <h2 class="section-title fade-in">なぜ、判断と実装は<br>すれ違うのか</h2>
-      <p class="section-sub fade-in">プロダクト・システム開発に関わる経営者・事業責任者・プロジェクト責任者の方へ</p>
-
-      <div class="pain-grid fade-in">
-        <div class="pain-diagram">
-          <div class="pain-side left">
-            <div class="pain-item">経営</div>
-            <div class="pain-item">コンサル</div>
-            <div class="pain-item">ビジネス</div>
-          </div>
-          <div class="pain-center">
-            <div class="pain-vs">
-              <span class="vs-line"></span>
-              <span class="vs-text">分断</span>
-              <span class="vs-line"></span>
-            </div>
-          </div>
-          <div class="pain-side right">
-            <div class="pain-item">エンジニア</div>
-            <div class="pain-item">開発</div>
-            <div class="pain-item">仕様</div>
-          </div>
-        </div>
-
-        <div class="pain-results">
-          <h3 class="pain-results-title">結果として起きること</h3>
-          <div class="pain-result-item">
-            <span class="pain-icon">⚠</span>
-            <div>
-              <strong>認識のズレが手戻りを生む</strong>
-              <p>合意したはずなのに、実装を見ると別物になっている</p>
-            </div>
-          </div>
-          <div class="pain-result-item">
-            <span class="pain-icon">⏳</span>
-            <div>
-              <strong>決まらないまま時間が過ぎる</strong>
-              <p>誰も決断できないまま、会議だけが積み重なる</p>
-            </div>
-          </div>
-          <div class="pain-result-item">
-            <span class="pain-icon">🔄</span>
-            <div>
-              <strong>動き出しても運用で止まる</strong>
-              <p>リリースしたが、現場に定着せず形骸化する</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Value: 提供価値 -->
-  <section class="section section-dark" id="value">
-    <div class="container">
-      <div class="section-label fade-in">Why</div>
-      <h2 class="section-title fade-in">分断をなくし、<br>意思決定と実装をつなぐ</h2>
-      <p class="section-sub fade-in">
-        目的と前提を揃え、優先度を決め、タスクに落とす。<br>
-        そこから実装・運用・改善が回る状態まで伴走します。
-      </p>
-
-      <div class="value-cards fade-in">
-        <div class="value-card">
-          <div class="value-num">01</div>
-          <h3>机上で終わらせない</h3>
-          <p>提案・設計を実装・運用に落とし込むまで、一貫して関わります。</p>
-        </div>
-        <div class="value-card">
-          <div class="value-num">02</div>
-          <h3>判断を止めない</h3>
-          <p>論点を整理し、選択肢を比較し、意思決定が前に進む状態をつくります。</p>
-        </div>
-        <div class="value-card">
-          <div class="value-num">03</div>
-          <h3>改善サイクルに接続する</h3>
-          <p>一度きりではなく、振り返りと改善が回り続ける仕組みを設計します。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Profile: 代表 -->
-  <section class="section" id="profile">
-    <div class="container">
-      <div class="section-label fade-in">Who</div>
-      <h2 class="section-title fade-in">"翻訳"と"実行"を両立する</h2>
-
-      <div class="profile-grid fade-in">
-        <div class="profile-card">
-          <div class="profile-avatar">
-            <div class="avatar-placeholder">
-              <span>T</span>
-            </div>
-          </div>
-          <div class="profile-info">
-            <h3 class="profile-name">石田武士</h3>
-            <p class="profile-career">IT業界20年以上 / エンジニア経験 → 起業</p>
-            <div class="profile-tags">
-              <span class="tag">システム開発</span>
-              <span class="tag">ITコンサル</span>
-              <span class="tag">AI駆動開発</span>
-              <span class="tag">開発マネジメント</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="why-us-table">
-          <h3 class="why-us-title">できること</h3>
-          <div class="why-row">
-            <div class="why-skill">
-              <span class="why-skill-icon">🔄</span>
-              ビジネス ⇄ 仕様 ⇄ 実装を翻訳
-            </div>
-            <div class="why-desc">立場の異なる関係者をつなぐ</div>
-          </div>
-          <div class="why-row">
-            <div class="why-skill">
-              <span class="why-skill-icon">✅</span>
-              合意形成・優先度・タスク化
-            </div>
-            <div class="why-desc">決めて、前に進める</div>
-          </div>
-          <div class="why-row">
-            <div class="why-skill">
-              <span class="why-skill-icon">🎯</span>
-              どの工程からでも参画
-            </div>
-            <div class="why-desc">構想段階から途中参画まで対応</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- How: 伴走範囲 -->
-  <section class="section section-dark" id="how">
-    <div class="container">
-      <div class="section-label fade-in">How</div>
-      <h2 class="section-title fade-in">どこからでも入り、<br>改善サイクルへ接続する</h2>
-
-      <div class="flow-wrapper fade-in">
-        <div class="flow-track">
-          <div class="flow-step">
-            <div class="flow-dot"></div>
-            <span>提案</span>
-          </div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-step">
-            <div class="flow-dot"></div>
-            <span>要件</span>
-          </div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-step">
-            <div class="flow-dot"></div>
-            <span>設計</span>
-          </div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-step">
-            <div class="flow-dot"></div>
-            <span>開発</span>
-          </div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-step">
-            <div class="flow-dot"></div>
-            <span>運用</span>
-          </div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-step">
-            <div class="flow-dot"></div>
-            <span>改善</span>
-          </div>
-        </div>
-        <div class="flow-label">どこからでも入れる</div>
-      </div>
-
-      <div class="how-mini-cards fade-in">
-        <div class="how-mini">
-          <span class="how-mini-icon">📋</span>
-          <h4>定例・意思決定フロー</h4>
-          <p>止まらない仕組みを設計</p>
-        </div>
-        <div class="how-mini">
-          <span class="how-mini-icon">📄</span>
-          <h4>ドキュメント整備</h4>
-          <p>属人化を防ぎ、引き継ぎを楽に</p>
-        </div>
-        <div class="how-mini">
-          <span class="how-mini-icon">🔁</span>
-          <h4>振り返り設計</h4>
-          <p>改善が回り続ける状態へ</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services: 事業内容 -->
+  <!-- Service Domains -->
   <section class="section" id="services">
     <div class="container">
-      <div class="section-label fade-in">What</div>
-      <h2 class="section-title fade-in">提供サービス</h2>
+      <div class="section-label fade-in">Service Domains</div>
+      <h2 class="section-title fade-in">3つの専門領域</h2>
+      <p class="section-sub fade-in">大規模設計からAI自動化まで、事業の成長フェーズに合わせた支援を提供します。</p>
 
-      <div class="services-grid fade-in">
-        <div class="service-card">
-          <div class="service-icon">🔍</div>
-          <h3>現状分析</h3>
-          <p>現行システムやドキュメントからリバースエンジニアリングを行い、再整備します。</p>
-          <div class="service-ai-tag">
-            <span class="ai-badge">AI</span> ドキュメント解析・構造抽出
+      <div class="domain-cards fade-in">
+        <div class="domain-card">
+          <div class="domain-num">01</div>
+          <h3 class="domain-title">エンタープライズDX &amp;<br>システムアーキテクチャ</h3>
+          <p class="domain-desc">大規模基幹システムの再構築、要件定義、詳細設計。現行システムの分析からAIを活用した設計レビュー、将来的な拡張性を担保したアーキテクチャ設計まで一貫して対応。</p>
+          <div class="domain-point">
+            <span class="domain-point-icon">→</span>
+            「作って終わり」ではなく、保守性と事業成長を両立させる<strong>設計力</strong>
+          </div>
+          <div class="domain-tags">
+            <span class="dtag">要件定義</span>
+            <span class="dtag">詳細設計</span>
+            <span class="dtag">AIレビュー</span>
+            <span class="dtag">アーキテクチャ</span>
           </div>
         </div>
-        <div class="service-card">
-          <div class="service-icon">🖼️</div>
-          <h3>プロトタイプ作成</h3>
-          <p>ヒアリング内容からプロトタイプアプリ、POCモックなどを作成します。</p>
-          <div class="service-ai-tag">
-            <span class="ai-badge">AI</span> UI/フロー生成
-          </div>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">💡</div>
-          <h3>構想・提案支援</h3>
-          <p>仮説整理・選択肢の比較から、意思決定に必要な材料を揃えます。</p>
-          <div class="service-ai-tag">
-            <span class="ai-badge">AI</span> 仮説整理・選択肢比較
-          </div>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">📝</div>
-          <h3>要件定義</h3>
-          <p>論点を抽出し、ステークホルダー間の認識を揃えます。</p>
-          <div class="service-ai-tag">
-            <span class="ai-badge">AI</span> 論点抽出・要約
-          </div>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">⚙️</div>
-          <h3>開発支援</h3>
-          <p>設計〜実装のレビューと、品質を担保する仕組みを整備します。</p>
-          <div class="service-ai-tag">
-            <span class="ai-badge">AI</span> レビュー補助
-          </div>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">🛠️</div>
-          <h3>運用支援</h3>
-          <p>ルール整備・問い合わせ対応・分析まで運用を安定させます。</p>
-          <div class="service-ai-tag">
-            <span class="ai-badge">AI</span> 分析・問い合わせ分類
-          </div>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">📈</div>
-          <h3>改善実行支援</h3>
-          <p>改善優先度の設計と実行サイクルの構築。継続的に価値を積み上げます。</p>
-          <div class="service-ai-tag">
-            <span class="ai-badge">AI</span> 優先度設計
-          </div>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">🔄</div>
-          <h3>PDCAサイクル改善支援</h3>
-          <p>Plan-Do-Check-Actの各フェーズに伴走し、プロダクトの継続的改善を推進します。</p>
-          <div class="service-ai-tag">
-            <span class="ai-badge">AI</span> 振り返り分析・KPI可視化
-          </div>
-        </div>
-      </div>
 
-      <div class="domains fade-in">
-        <h3 class="domains-title">対応領域</h3>
-        <div class="domain-tags">
-          <span class="domain-tag">Web</span>
-          <span class="domain-tag">アプリ</span>
-          <span class="domain-tag">EC</span>
-          <span class="domain-tag">スポーツ</span>
-          <span class="domain-tag">BtoB</span>
-          <span class="domain-tag">BtoC</span>
+        <div class="domain-card">
+          <div class="domain-num">02</div>
+          <h3 class="domain-title">アジャイル・プロダクト開発<br>（Web / Mobile）</h3>
+          <p class="domain-desc">Next.js, React Nativeを用いた高機能なWeb・モバイルアプリの開発。モックアップによる早期可視化と、モダンな技術スタック（TypeScript, Tailwind CSS等）による高速実装。</p>
+          <div class="domain-point">
+            <span class="domain-point-icon">→</span>
+            UXを重視し、プロトタイプから本番運用まで<strong>一気通貫</strong>でサポート
+          </div>
+          <div class="domain-tags">
+            <span class="dtag">Next.js</span>
+            <span class="dtag">React Native</span>
+            <span class="dtag">TypeScript</span>
+            <span class="dtag">高速実装</span>
+          </div>
         </div>
-        <p class="domains-note">共通：止まる原因に介入し、判断と実装をつなぐ</p>
+
+        <div class="domain-card">
+          <div class="domain-num">03</div>
+          <h3 class="domain-title">AI統合 &amp;<br>業務自動化ソリューション</h3>
+          <p class="domain-desc">LLM（生成AI）を活用した業務効率化、高度なクローリング、データ分析基盤の構築。Python/Scrapyによるデータ収集、生成AIによるコンテンツ自動生成、AWS CDKによるインフラ自動化。</p>
+          <div class="domain-point">
+            <span class="domain-point-icon">→</span>
+            単なる自動化ではなく、人間の意思決定を<strong>エンパワーメント</strong>するAI活用
+          </div>
+          <div class="domain-tags">
+            <span class="dtag">LLM統合</span>
+            <span class="dtag">Python</span>
+            <span class="dtag">Scrapy</span>
+            <span class="dtag">AWS CDK</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Results: 実績 -->
-  <section class="section section-dark" id="results">
+  <!-- Works / Case Studies -->
+  <section class="section section-dark" id="works">
     <div class="container">
-      <div class="section-label fade-in">Results</div>
-      <h2 class="section-title fade-in">実績</h2>
-      <p class="section-sub fade-in">※社名非公開可。詳細はお問い合わせください。</p>
+      <div class="section-label fade-in">Works</div>
+      <h2 class="section-title fade-in">制作実績</h2>
+      <p class="section-sub fade-in">※クライアント名は業種・規模感に置き換えています。詳細はお問い合わせください。</p>
 
-      <div class="results-grid fade-in">
-        <div class="result-card">
-          <div class="result-category">0→1開発</div>
-          <h3>大規模ファン向けアプリの新規立ち上げ</h3>
-          <p>複数組織横断で利用されるアプリの0→1開発。外部API連携やOMO施策を統括し、新規プラットフォームを立ち上げ。</p>
-          <div class="result-metric">複数組織横断、大規模ステークホルダー調整</div>
+      <div class="works-grid fade-in">
+        <div class="work-card">
+          <div class="work-category">金融・決済基盤</div>
+          <h3>大規模金融システムの詳細設計支援</h3>
+          <p>大規模金融システムの再構築に向けた詳細設計およびドキュメント整備支援。</p>
+          <div class="work-metrics">
+            <span class="work-metric-tag">設計品質の向上</span>
+            <span class="work-metric-tag">開発スピードの加速</span>
+          </div>
         </div>
-        <div class="result-card">
-          <div class="result-category">BtoBプラットフォーム</div>
-          <h3>受発注・商品管理プラットフォーム</h3>
-          <p>業界向けの受発注一元管理プラットフォーム。選定〜見積/発注の工程効率化。AIを活用した業務改善とリニューアルを推進。</p>
-          <div class="result-metric">多数社導入、大規模商品DB、AI活用</div>
+
+        <div class="work-card">
+          <div class="work-category">小売・流通DX</div>
+          <h3>生活圏アプリ（iOS / Android）の保守運用</h3>
+          <p>大規模ユーザーを抱える生活圏アプリの機能改修・保守運用。</p>
+          <div class="work-metrics">
+            <span class="work-metric-tag">React Native</span>
+            <span class="work-metric-tag">Expo</span>
+            <span class="work-metric-tag">CI/CD</span>
+          </div>
         </div>
-        <div class="result-card">
-          <div class="result-category">メディア・グロース</div>
-          <h3>大規模メディアプラットフォームの運用・改善</h3>
-          <p>月間数千万PV規模のプラットフォーム運用。SEO戦略、導線最適化、ABテストの統括。</p>
-          <div class="result-metric">大規模PV、コンバージョン最適化で事業貢献</div>
+
+        <div class="work-card">
+          <div class="work-category">AI × マーケティング</div>
+          <h3>記事作成・レビュー自動化システム</h3>
+          <p>生成AIを活用した記事作成・レビュー自動化システムの開発。</p>
+          <div class="work-metrics">
+            <span class="work-metric-tag">LLM統合</span>
+            <span class="work-metric-tag">Python</span>
+            <span class="work-metric-tag highlight">業務時間80%削減</span>
+          </div>
         </div>
-        <div class="result-card">
-          <div class="result-category">EC・Webサービス</div>
-          <h3>D2C・パブリッシング基盤</h3>
-          <p>LTV重視のEC構築・運営、またはユーザー参加型Webパブリッシング。定期購入、CRM/ERP連携、製造プロセス連携を実現。</p>
-          <div class="result-metric">定期購入・CRM/ERP統合、製造ライン連携</div>
+
+        <div class="work-card">
+          <div class="work-category">データ基盤・検索</div>
+          <h3>大規模クローリング &amp; 商品検索エンジン</h3>
+          <p>家具・インテリア業界向けの大規模クローリングエンジンおよび商品検索システムの構築。</p>
+          <div class="work-metrics">
+            <span class="work-metric-tag">Scrapy</span>
+            <span class="work-metric-tag">AWS</span>
+            <span class="work-metric-tag">高精度検索エンジン</span>
+          </div>
         </div>
-        <div class="result-card">
-          <div class="result-category">体制・育成</div>
-          <h3>マルチプロジェクト完遂</h3>
-          <p>プロジェクトを複数件同時にマネジメント。チームからリード級人材を輩出する育成実績。</p>
-          <div class="result-metric">最大10件同時、10名以上のリード級人材輩出</div>
-        </div>
-        <div class="result-card">
-          <div class="result-category">その他</div>
-          <h3>Web・アプリなどのシステム開発全般</h3>
-          <p>あらゆるフェーズで何が必要になるかをご提案・コンサルティングさせていただきます。</p>
-          <div class="result-metric">豊富なプロジェクト開発経験の実績</div>
+
+        <div class="work-card">
+          <div class="work-category">新規事業モックアップ</div>
+          <h3>VC向けピッチから数日で動くプロトタイプ</h3>
+          <p>VC向けピッチ資料から、数日で「動くプロトタイプ」を作成する高速開発支援。</p>
+          <div class="work-metrics">
+            <span class="work-metric-tag">Next.js</span>
+            <span class="work-metric-tag highlight">迅速な合意形成</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- AI section -->
-  <section class="section" id="ai">
+  <!-- Technology Stack -->
+  <section class="section" id="tech">
     <div class="container">
-      <div class="section-label fade-in">AI × 意思決定</div>
-      <h2 class="section-title fade-in">AIで"判断が進む状態"をつくる</h2>
-      <p class="section-sub fade-in">AIは主役ではなく、意思決定を前に進める道具です</p>
+      <div class="section-label fade-in">Technology</div>
+      <h2 class="section-title fade-in">技術スタック</h2>
+      <p class="section-sub fade-in">最新鋭のツールを使いこなすプロフェッショナルとして、ビジネス要件に最適な技術を選定します。</p>
 
-      <div class="ai-cards fade-in">
-        <div class="ai-card">
-          <div class="ai-num">整理</div>
-          <h3>情報・論点・前提を揃える</h3>
-          <p>散在する情報を構造化し、議論の出発点を明確にします。</p>
+      <div class="tech-groups fade-in">
+        <div class="tech-group">
+          <div class="tech-group-label">Languages / Frameworks</div>
+          <div class="tech-pills">
+            <span class="tech-pill">TypeScript</span>
+            <span class="tech-pill">Next.js</span>
+            <span class="tech-pill">React Native</span>
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">Node.js</span>
+            <span class="tech-pill">Go</span>
+          </div>
         </div>
-        <div class="ai-connector">
-          <div class="ai-arrow">→</div>
+        <div class="tech-group">
+          <div class="tech-group-label">Infrastructure / Tools</div>
+          <div class="tech-pills">
+            <span class="tech-pill">AWS (CDK)</span>
+            <span class="tech-pill">Docker</span>
+            <span class="tech-pill">Vercel</span>
+            <span class="tech-pill">Expo</span>
+            <span class="tech-pill">Vitest</span>
+            <span class="tech-pill">Biome</span>
+          </div>
         </div>
-        <div class="ai-card">
-          <div class="ai-num">比較</div>
-          <h3>選択肢・リスク・コストを並べる</h3>
-          <p>判断に必要な軸を整理し、意思決定者が選べる状態をつくります。</p>
-        </div>
-        <div class="ai-connector">
-          <div class="ai-arrow">→</div>
-        </div>
-        <div class="ai-card">
-          <div class="ai-num">実行</div>
-          <h3>決めたことをタスク化し運用へ</h3>
-          <p>決定事項を具体的なタスクに落とし、実行できる状態へ橋渡しします。</p>
+        <div class="tech-group tech-group-ai">
+          <div class="tech-group-label">AI / Next-Gen</div>
+          <div class="tech-pills">
+            <span class="tech-pill tech-pill-ai">OpenAI API</span>
+            <span class="tech-pill tech-pill-ai">Cursor</span>
+            <span class="tech-pill tech-pill-ai">AI-driven development</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA / Contact -->
+  <!-- Why Us -->
+  <section class="section section-dark" id="why">
+    <div class="container">
+      <div class="section-label fade-in">Why Us</div>
+      <h2 class="section-title fade-in">テイクサイドの強み</h2>
+
+      <div class="why-cards fade-in">
+        <div class="why-card">
+          <div class="why-card-num">01</div>
+          <h3>「動くもの」至上主義</h3>
+          <p>ドキュメントだけでなく、早期にモックアップを提供し、認識のズレをゼロにします。</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-num">02</div>
+          <h3>AI共生型ワークフロー</h3>
+          <p>開発プロセス自体にAIを組み込むことで、従来の数倍のスピードと精度を実現します。</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-num">03</div>
+          <h3>ビジネスと技術の橋渡し</h3>
+          <p>エンジニアリングだけでなく、事業設計やUI/UXデザインの視点を持って伴走します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
   <section class="section section-cta" id="contact">
     <div class="container cta-content">
-      <div class="section-label fade-in">Next Step</div>
-      <h2 class="section-title fade-in">
-        まずは現状ヒアリングから
-      </h2>
+      <div class="section-label fade-in">Contact</div>
+      <h2 class="section-title fade-in">まずはご相談から</h2>
       <p class="section-sub fade-in">
         「どこから手をつければいいかわからない」という段階でも構いません。<br>
         現状を整理するところから一緒に考えます。
       </p>
+
+      <div class="pain-paths fade-in">
+        <div class="pain-path">
+          <div class="pain-path-icon">🏗️</div>
+          <h4>現状のシステムに課題がある</h4>
+          <p>設計・アーキテクチャの見直し、レガシー刷新をご検討の方</p>
+        </div>
+        <div class="pain-path">
+          <div class="pain-path-icon">🤖</div>
+          <h4>AIで業務を自動化したい</h4>
+          <p>生成AI・LLMを活用した業務効率化を検討している方</p>
+        </div>
+        <div class="pain-path">
+          <div class="pain-path-icon">🚀</div>
+          <h4>新規プロダクトを素早く立ち上げたい</h4>
+          <p>アイデアをすぐに「動くもの」にして検証したい方</p>
+        </div>
+      </div>
+
       <div class="company-info fade-in">
         <div class="company-info-inner">
           <table class="company-table">
@@ -445,7 +287,7 @@
             </tr>
             <tr>
               <th>事業内容</th>
-              <td>ITコンサルティング / システム開発支援 / AI駆動開発コンサル</td>
+              <td>ITコンサルティング / システム開発支援 / AI駆動開発</td>
             </tr>
           </table>
           <p class="company-note">*takeside = takeshi + side</p>

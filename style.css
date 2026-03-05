@@ -1339,18 +1339,18 @@ body {
 .works-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 16px;
 }
 
 .work-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 28px 24px;
+  padding: 20px 18px;
   transition: var(--transition);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 }
 
 .work-card:hover {
@@ -1383,8 +1383,8 @@ body {
 .work-metrics {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 4px;
+  gap: 5px;
+  margin-top: 2px;
 }
 
 .work-metric-tag {

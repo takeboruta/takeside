@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="テイクサイド株式会社 — Digital Realizer. AI・Web・Mobileの最新技術を駆使し、ビジネスの構想を「動くシステム」へ最短距離で導く。">
+  <meta name="theme-color" content="#1a3a6e">
+  <meta name="description" content="テイクサイド株式会社 — 中小企業向けAI導入コンサルティング & プロトタイプ・ツール開発。要件定義から始めず、まず動くものを作り、実物を見ながら投資判断できる進め方。">
   <title>テイクサイド株式会社 | Takeside Inc.</title>
+  <link rel="icon" type="image/svg+xml" href="logo-takeside-color.svg">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -20,17 +21,18 @@
   <header class="header" id="header">
     <nav class="nav container">
       <a href="#top" class="nav-logo">
-        <img src="logo.svg" alt="TAKESIDE" class="logo-img">
-        <span class="logo-text">テイクサイド</span>
+        <img src="logo-takeside-color.svg" alt="TAKESIDE INC." class="logo-img">
       </a>
       <button class="nav-toggle" id="navToggle" aria-label="メニュー">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#services">サービス</a></li>
+        <li><a href="#problems">お悩み</a></li>
+        <li><a href="#approach">進め方</a></li>
+        <li><a href="#services">提供内容</a></li>
+        <li><a href="#cases">事例</a></li>
+        <li><a href="#pricing">料金</a></li>
         <li><a href="#works">実績</a></li>
-        <li><a href="#tech">技術スタック</a></li>
-        <li><a href="#why">強み</a></li>
         <li><a href="#contact">お問い合わせ</a></li>
       </ul>
     </nav>
@@ -42,15 +44,15 @@
       <div class="hero-noise"></div>
     </div>
     <div class="container hero-content">
-      <div class="hero-eyebrow fade-in">AI Consulting / Prototype First</div>
+      <div class="hero-eyebrow fade-in">中小企業向け AI導入コンサルティング & プロトタイプ・ツール開発</div>
       <h1 class="hero-title fade-in">
         AIを「使う」から、<br>
         業務の仕組みに組み込むへ。
       </h1>
       <p class="hero-desc fade-in">
-        中小企業向けのAI導入コンサルティングとプロトタイプ・ツール開発。<br>
-        要件定義から始めず、まず動くものを作り、<br>
-        実物を見ながら投資判断できる進め方を取ります。
+        AIを単なる話題や実験で終わらせず、実際の業務フローの中に組み込み、<br>
+        現場で使える仕組みとして定着させることを支援します。<br>
+        要件定義から始めず、まず動くプロトタイプを作り、実物を見ながら投資判断できる進め方です。
       </p>
       <div class="hero-cta fade-in">
         <a href="#services" class="btn btn-primary">提供内容を見る</a>
@@ -59,96 +61,252 @@
       <div class="hero-kickers fade-in">
         <span class="hero-kicker">Excel / CSV だけでも着手可能</span>
         <span class="hero-kicker">最短1週間でデモ環境</span>
-        <span class="hero-kicker">Claude / ChatGPT / Gemini 対応</span>
+        <span class="hero-kicker">プロトタイプ作成までは基本0円</span>
       </div>
     </div>
   </section>
 
-  <!-- Problems -->
-  <section class="section section-dark" id="problems">
+  <!-- お悩み（2軸ペルソナ） -->
+  <section class="section section-bar-top" id="problems">
     <div class="container">
       <div class="section-label fade-in">Pain Points</div>
-      <h2 class="section-title fade-in">こんなお悩みはありませんか？</h2>
-      <p class="section-sub fade-in">AI導入の必要性は感じているが、何から始めればよいか分からない。そんな段階から前に進めるための支援です。</p>
+      <h2 class="section-title section-title-accent fade-in">こんなお悩みはありませんか？</h2>
+      <p class="section-sub fade-in">立場によって異なる「AI導入の壁」と「SaaSの限界」。テイクサイドは、両者の現実的な課題を起点に支援を組み立てます。</p>
 
-      <div class="pain-paths fade-in">
-        <div class="pain-path">
-          <div class="pain-path-icon">💼</div>
-          <h4>成果が見えないまま大きく投資しづらい</h4>
-          <p>SIerやSaaSに費用を払っても、期待した成果につながるか判断しにくい状態が続いている。</p>
+      <div class="persona-grid fade-in">
+        <div class="persona-card">
+          <div class="persona-head">
+            <div class="persona-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2.4c-3.6 0-10.8 1.8-10.8 5.4v1.8h21.6v-1.8c0-3.6-7.2-5.4-10.8-5.4z"/></svg>
+            </div>
+            <div class="persona-title">経営者・意思決定者</div>
+          </div>
+          <ul class="check-list">
+            <li>SIerやSaaSの費用対効果に疑問</li>
+            <li>AI導入の入口・始め方が不明</li>
+            <li>投資判断に足る材料が見えない</li>
+            <li>SaaS導入後も運用負荷が残る</li>
+          </ul>
         </div>
-        <div class="pain-path">
-          <div class="pain-path-icon">🧩</div>
-          <h4>現場業務が複雑で要件に整理しきれない</h4>
-          <p>例外処理や属人的な運用が多く、「要件をください」と言われても言語化しきれない。</p>
+
+        <div class="persona-card">
+          <div class="persona-head">
+            <div class="persona-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+            </div>
+            <div class="persona-title">システム担当・現場責任者</div>
+          </div>
+          <ul class="check-list">
+            <li>業務が複雑で要件化しきれない</li>
+            <li>「要件をください」と言われ困惑</li>
+            <li>SaaS標準化と固有運用の併存が難しい</li>
+            <li>既存システムとの連携に不安</li>
+          </ul>
         </div>
-        <div class="pain-path">
-          <div class="pain-path-icon">🔌</div>
-          <h4>既存環境との連携や運用負荷が不安</h4>
-          <p>大規模リプレイスは避けたい一方で、Excel・メール・既存システムの間で詰まりが発生している。</p>
-        </div>
+      </div>
+
+      <div class="highlight-strip fade-in">
+        <span class="hl-icon">💡</span>
+        <span>この提案は AIの一般論ではなく、貴社の<span class="hl-mark">「現実の悩み」</span>を解決するためのものです。</span>
       </div>
     </div>
   </section>
 
-  <!-- Prototype First -->
-  <section class="section" id="approach">
+  <!-- なぜ従来の開発ではうまくいかないか -->
+  <section class="section section-dark section-bar-top" id="legacy">
+    <div class="container">
+      <div class="section-label fade-in">Why Traditional Fails</div>
+      <h2 class="section-title section-title-accent fade-in">なぜ、従来のシステム開発ではうまくいきにくいのか</h2>
+      <p class="section-sub fade-in">
+        従来のシステム開発では、最初に要件を整理し、見積もりを出し、開発を進める流れが一般的です。<br>
+        しかし実際には、現場業務は複雑で、最初の段階で必要な要件を完全に整理しきれないことが多くあります。<br>
+        SaaSは標準業務には強い一方で、各社固有の例外運用や判断業務までは吸収しきれず、人手で補っている企業も少なくありません。
+      </p>
+
+      <div class="legacy-flow fade-in">
+        <div class="legacy-flow-step">
+          <span>要件定義</span>
+        </div>
+        <div class="legacy-flow-arrow">→</div>
+        <div class="legacy-flow-step">
+          <span>見積もり・契約</span>
+        </div>
+        <div class="legacy-flow-arrow">→</div>
+        <div class="legacy-flow-step dark">
+          <span>設計・開発</span>
+          <span class="lfs-sub">数ヶ月〜半年:実物が見えない</span>
+        </div>
+        <div class="legacy-flow-arrow">→</div>
+        <div class="legacy-flow-step warn">
+          <span>納品・検収</span>
+          <span class="lfs-sub" style="color:var(--accent-red)">⚠ ここで認識ズレが発覚</span>
+        </div>
+      </div>
+
+      <div class="legacy-warning-box fade-in">
+        <div class="legacy-warning-box-title">ここで認識ズレが発覚:</div>
+        <ul>
+          <li>思っていたものと違う</li>
+          <li>この例外処理が抜けている</li>
+          <li>実運用では回らない</li>
+        </ul>
+      </div>
+
+      <div class="highlight-strip fade-in" style="margin-top:24px;">
+        <span class="hl-icon">ℹ️</span>
+        <span>問題はAIの有無ではなく、<span class="hl-mark">完成するまで具体物が見えない進め方</span>にあります。</span>
+      </div>
+
+      <p class="legacy-conclusion fade-in">結果として、高コスト・長納期・低納得になりやすい。</p>
+    </div>
+  </section>
+
+  <!-- 進め方:要件定義から始めない -->
+  <section class="section section-bar-top" id="approach">
     <div class="container">
       <div class="section-label fade-in">Approach</div>
-      <h2 class="section-title fade-in">要件定義から始めません。まず、動くプロトタイプから。</h2>
-      <p class="section-sub fade-in">問題はAIの有無ではなく、完成するまで具体物が見えない進め方にあります。テイクサイドは、実物を最初に見せることで認識ズレを減らします。</p>
+      <h2 class="section-title section-title-accent fade-in">テイクサイドは、要件定義から始めません</h2>
+      <p class="section-sub fade-in">問題はAIの有無ではなく、完成するまで具体物が見えない進め方にあります。<br>テイクサイドは、実物を最初に見せることで認識ズレを減らします。</p>
+
+      <ul class="check-list check-list-light fade-in" style="max-width:640px;margin:0 auto 24px;">
+        <li>現場の資料（Excel・CSV・マニュアル等）から着手</li>
+        <li>業務の仮説・フローを構築してプロトタイプ作成</li>
+        <li>実物を見ながら『必要なもの』を具体化</li>
+      </ul>
+
+      <div class="zero-cost-badge-wrap fade-in">
+        <span class="zero-cost-badge">投資リスクを最小化 ─ プロトタイプ作成までは「基本0円」対応</span>
+      </div>
 
       <div class="prototype-grid fade-in">
         <div class="compare-panel">
-          <div class="compare-label">従来の進め方</div>
-          <h3>数ヶ月かけて作ってから、はじめて見える</h3>
+          <div class="compare-label">これらがあれば始められます</div>
+          <h3>資料が雑多なままでも、前に進めます</h3>
           <ul class="compare-list">
-            <li>仕様書やドキュメントが中心</li>
-            <li>現場の例外処理が抜けやすい</li>
-            <li>修正時に追加費用や手戻りが発生しやすい</li>
+            <li>Excel / CSV</li>
+            <li>業務マニュアル</li>
+            <li>メール・会話ログ</li>
+            <li>現場の断片情報</li>
           </ul>
         </div>
         <div class="compare-panel compare-panel-accent">
-          <div class="compare-label">テイクサイドの進め方</div>
-          <h3>最短1週間で触れるものを用意</h3>
+          <div class="compare-label">アウトプット</div>
+          <h3>動くプロトタイプを最短1週間で</h3>
           <ul class="compare-list">
+            <li>業務仮説を構築して試作</li>
             <li>入力・出力・判定結果を実物で確認</li>
             <li>初期段階で認識合わせと修正を反映</li>
-            <li>小さな実証後に本導入を判断できる</li>
           </ul>
         </div>
       </div>
 
-      <div class="intake-card fade-in">
-        <div class="intake-copy">
-          <div class="intake-label">これらがあれば始められます</div>
-          <div class="tech-pills">
-            <span class="tech-pill">Excel / CSV</span>
-            <span class="tech-pill">業務マニュアル</span>
-            <span class="tech-pill">メール・会話ログ</span>
-            <span class="tech-pill">現場の断片情報</span>
-          </div>
+      <div class="prototype-grid fade-in" style="grid-template-columns:repeat(3,1fr); gap:12px; margin-top:24px;">
+        <div class="approach-row" style="background:var(--bg-secondary); padding:14px 18px; border-radius:8px;">
+          <span class="approach-row-icon" style="color:var(--accent-blue)">✓</span>
+          <div class="approach-row-body"><span>要件が曖昧でも着手可能</span></div>
         </div>
-        <p class="intake-note">要件が曖昧でも着手可能です。資料を丸ごと共有いただく形でも問題ありません。</p>
+        <div class="approach-row" style="background:var(--bg-secondary); padding:14px 18px; border-radius:8px;">
+          <span class="approach-row-icon" style="color:var(--accent-blue)">✓</span>
+          <div class="approach-row-body"><span>認識ズレを早期発見</span></div>
+        </div>
+        <div class="approach-row" style="background:var(--bg-secondary); padding:14px 18px; border-radius:8px;">
+          <span class="approach-row-icon" style="color:var(--accent-blue)">✓</span>
+          <div class="approach-row-body"><span>実物で投資判断</span></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Service Domains -->
-  <section class="section" id="services">
+  <!-- 比較:なぜ先にプロトタイプを作ると失敗しにくいのか -->
+  <section class="section section-dark section-bar-top" id="why-prototype">
+    <div class="container">
+      <div class="section-label fade-in">Why Prototype First</div>
+      <h2 class="section-title section-title-accent fade-in">なぜ、先にプロトタイプを作ると失敗しにくいのか</h2>
+      <p class="section-sub fade-in">「全部決めてから動く」のではなく、「動くものを見ながら決める」ことで、認識ズレ・手戻り・無駄な投資を未然に防ぎます。</p>
+
+      <div class="approach-compare fade-in">
+        <div class="approach-card">
+          <div class="approach-card-label">従来のアプローチ</div>
+          <div class="approach-row">
+            <span class="approach-row-icon">📄</span>
+            <div class="approach-row-body">
+              <span>最初に要件書を作成</span>
+              <span class="approach-row-sub">数週間〜数か月の開発期間</span>
+            </div>
+          </div>
+          <div class="approach-row">
+            <span class="approach-row-icon">🖥️</span>
+            <div class="approach-row-body">
+              <span>ようやく画面や仕組みが見える</span>
+            </div>
+          </div>
+          <div class="approach-result-block bad">
+            <span class="approach-row-icon">⚠️</span>
+            <div>
+              <div class="approach-result-title">その段階で初めて問題が表面化</div>
+              <ul>
+                <li>「思っていたのと違う」</li>
+                <li>「この例外業務が抜けている」</li>
+                <li>「現場運用で回らない」</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="approach-compare-arrow">›</div>
+
+        <div class="approach-card approach-card-good">
+          <div class="approach-card-label">テイクサイドのアプローチ</div>
+          <div class="approach-row">
+            <span class="approach-row-icon">🚀</span>
+            <div class="approach-row-body">
+              <span>先に「触れるプロトタイプ」を作成</span>
+              <span class="approach-row-sub">画面・入力・出力・判定結果を確認</span>
+            </div>
+          </div>
+          <div class="approach-row">
+            <span class="approach-row-icon">👥</span>
+            <div class="approach-row-body">
+              <span>実物を見ながら必要な仕様を具体化</span>
+            </div>
+          </div>
+          <div class="approach-result-block good">
+            <span class="approach-row-icon">✓</span>
+            <div>
+              <div class="approach-result-title">失敗を未然に防ぎ、確実な導入判断へ</div>
+              <ul>
+                <li>要件整理の負担を減らせる</li>
+                <li>現場との認識ズレを早期に潰せる</li>
+                <li>使えるかどうかを先に確認できる</li>
+                <li>大きな投資の前に止める判断もできる</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-strip fade-in">
+        <span class="hl-icon">💡</span>
+        <span>プロトタイプは、単なるデモではありません。<span class="hl-mark">失敗しないための経営判断ツール</span>です。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 提供できること(Solutions) -->
+  <section class="section section-bar-top" id="services">
     <div class="container">
       <div class="section-label fade-in">Solutions</div>
-      <h2 class="section-title fade-in">貴社の業務に最適化した3つのソリューション</h2>
-      <p class="section-sub fade-in">プロトタイプ開発、業務自動化ツール導入、AI運用支援まで。小さく始めて、効果が見えたものを拡張します。</p>
+      <h2 class="section-title section-title-accent fade-in">提供できること</h2>
+      <p class="section-sub fade-in">テイクサイドは、構想整理だけでも、ツール試作だけでも終わりません。業務に合わせて、企画・試作・実装・運用までを柔軟に支援します。</p>
 
       <div class="domain-cards fade-in">
         <div class="domain-card">
           <div class="domain-num">01</div>
-          <h3 class="domain-title">AIプロトタイプ開発</h3>
-          <p class="domain-desc">実際の業務データを用いた動作デモを最短1週間で作成。Excelや業務フローを預かり、自動化ポイントを可視化します。</p>
+          <h3 class="domain-title">🧪 AIプロトタイプ開発</h3>
+          <p class="domain-desc">実際の業務データを用いた動作デモを最短1週間で作成。Excelや業務フローをそのまま預かり、自動化ポイントを特定します。</p>
           <div class="domain-point">
             <span class="domain-point-icon">→</span>
-            <span>効果が見える前に大きく投資せず、<strong>見極めるための材料</strong>を先に作ります。</span>
+            <span>実現性の確認、業務フローの可視化、<strong>導入判断材料づくり</strong>に最適。</span>
           </div>
           <div class="domain-tags">
             <span class="dtag">実データ検証</span>
@@ -160,11 +318,11 @@
 
         <div class="domain-card">
           <div class="domain-num">02</div>
-          <h3 class="domain-title">業務自動化ツール導入</h3>
-          <p class="domain-desc">求人運用自動化、Webスクレイピング、AIデータ整形など、特定業務に特化したツールを提供します。</p>
+          <h3 class="domain-title">⚙️ 業務自動化ツール導入</h3>
+          <p class="domain-desc">特定業務に特化したツールを提供。重複チェック、タイトル生成、スクレイピング、AIデータ整形などに対応します。</p>
           <div class="domain-point">
             <span class="domain-point-icon">→</span>
-            <span>既存環境を壊さず、<strong>詰まりの大きい工程</strong>から段階的に改善します。</span>
+            <span>既存環境を壊さず、現場の運用に合わせて<strong>柔軟に実装</strong>します。</span>
           </div>
           <div class="domain-tags">
             <span class="dtag">Excel連携</span>
@@ -176,8 +334,8 @@
 
         <div class="domain-card">
           <div class="domain-num">03</div>
-          <h3 class="domain-title">AI運用支援・内製化</h3>
-          <p class="domain-desc">現場スタッフがAIを使いこなすためのマニュアル整備、オペレーション設計、人材マッチングまで伴走します。</p>
+          <h3 class="domain-title">👥 AI運用支援・内製化</h3>
+          <p class="domain-desc">マニュアル整備、オペレーション設計、定着支援。人材マッチングを含む伴走型運用支援も可能です。</p>
           <div class="domain-point">
             <span class="domain-point-icon">→</span>
             <span>単発開発ではなく、運用に乗るところまで<strong>自走可能な体制</strong>を作ります。</span>
@@ -190,127 +348,753 @@
           </div>
         </div>
       </div>
+
+      <!-- 削減実績テーブル -->
+      <div class="reduction-board fade-in">
+        <div class="reduction-board-title">
+          <span>✅ その他ご相談可能な業務領域</span>
+          <span class="rb-note">(作業時間 80%〜95% 削減実績あり)</span>
+        </div>
+        <div class="reduction-grid">
+          <div class="reduction-item"><span class="reduction-item-label"><span class="ri-icon">📝</span>議事録作成</span><span class="reduction-item-rate">92%↓</span></div>
+          <div class="reduction-item"><span class="reduction-item-label"><span class="ri-icon">📊</span>データ集計</span><span class="reduction-item-rate">92%↓</span></div>
+          <div class="reduction-item"><span class="reduction-item-label"><span class="ri-icon">#</span>SNS投稿生成</span><span class="reduction-item-rate">90%↓</span></div>
+          <div class="reduction-item"><span class="reduction-item-label"><span class="ri-icon">🌐</span>ブラウザ操作</span><span class="reduction-item-rate">80%↓</span></div>
+          <div class="reduction-item"><span class="reduction-item-label"><span class="ri-icon">✉️</span>メール下書き</span><span class="reduction-item-rate">87%↓</span></div>
+          <div class="reduction-item"><span class="reduction-item-label"><span class="ri-icon">🔍</span>リサーチ自動化</span><span class="reduction-item-rate">88%↓</span></div>
+          <div class="reduction-item"><span class="reduction-item-label"><span class="ri-icon">💼</span>商談ログ連携</span><span class="reduction-item-rate">85%↓</span></div>
+          <div class="reduction-item"><span class="reduction-item-label"><span class="ri-icon">📂</span>フォルダ整理</span><span class="reduction-item-rate">95%↓</span></div>
+          <div class="reduction-item"><span class="reduction-item-label"><span class="ri-icon">📑</span>提案書作成</span><span class="reduction-item-rate">88%↓</span></div>
+          <div class="reduction-item"><span class="reduction-item-label"><span class="ri-icon">💴</span>請求書作成</span><span class="reduction-item-rate">90%↓</span></div>
+          <div class="reduction-item"><span class="reduction-item-label"><span class="ri-icon">📅</span>日報・週報作成</span><span class="reduction-item-rate">95%↓</span></div>
+          <div class="reduction-item"><span class="reduction-item-label"><span class="ri-icon">📈</span>競合比較表</span><span class="reduction-item-rate">90%↓</span></div>
+        </div>
+        <p class="reduction-board-foot">※削減率は類似業務での実績例です。実際の効果は業務内容や導入環境により異なります。</p>
+      </div>
+
+      <div class="highlight-strip fade-in" style="margin-top:16px;">
+        <span class="hl-icon">ℹ️</span>
+        <span>使用AIは Claude / Gemini / Copilot / ChatGPT など、御社の導入状況に合わせて柔軟に対応可能です。</span>
+      </div>
     </div>
   </section>
 
-  <!-- Works -->
-  <section class="section section-dark" id="works">
+  <!-- Roll-out:既存環境を壊さず -->
+  <section class="section section-dark section-bar-top" id="rollout">
     <div class="container">
-      <div class="section-label fade-in">Case Study</div>
-      <h2 class="section-title fade-in">実績</h2>
+      <div class="section-label fade-in">Rollout</div>
+      <h2 class="section-title section-title-accent fade-in">既存環境を壊さず、周辺業務から始められます</h2>
+      <p class="section-sub fade-in">大規模なリプレイスは不要です。今の業務フローの中で「困っている部分」だけを段階的に改善します。</p>
+
+      <div class="rollout-grid fade-in">
+        <article class="rollout-card step1">
+          <div class="rollout-step">Step 1</div>
+          <h3>📄 周辺業務から着手</h3>
+          <p><strong>Excel / CSV 連携</strong></p>
+          <ul class="compare-list" style="margin-top:8px;">
+            <li>既存の基幹システムはそのまま</li>
+            <li>手作業データの整形・加工のみ自動化</li>
+            <li>メールやチャットからの情報抽出</li>
+            <li>即日〜1週間で開始可能</li>
+          </ul>
+        </article>
+        <article class="rollout-card step2">
+          <div class="rollout-step">Step 2</div>
+          <h3>🤖 高度な判断を支援</h3>
+          <p><strong>API連携・証跡保存</strong></p>
+          <ul class="compare-list" style="margin-top:8px;">
+            <li>審査・判定業務の半自動化</li>
+            <li>判定理由をログとして保存</li>
+            <li>人の確認工程（承認）を残す</li>
+            <li>下書き生成による負荷軽減</li>
+          </ul>
+        </article>
+        <article class="rollout-card step3">
+          <div class="rollout-step">Step 3</div>
+          <h3>🏢 業務全体の統合</h3>
+          <p><strong>基幹連携・部門展開</strong></p>
+          <ul class="compare-list" style="margin-top:8px;">
+            <li>基幹システムへの自動登録</li>
+            <li>RPA等と連携した全自動化</li>
+            <li>他部署・他拠点への水平展開</li>
+            <li>運用体制の内製化・自走</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="highlight-strip highlight-strip-dark fade-in">
+        <span class="hl-icon">✓</span>
+        <span>大きく入れ替えるのではなく、まず詰まりの大きい工程から改善します。</span>
+      </div>
+
+      <h3 class="section-title section-title-accent fade-in" style="font-size:24px;margin-top:60px;margin-bottom:8px;">導入イメージ:最短で、ここまで進む</h3>
+      <p class="section-sub fade-in" style="margin-bottom:32px;">初回相談の時点で、完璧な資料や詳細な要件書は必要ありません。現場で実際に使っている資料や業務の流れを共有いただければ、短期間で仮説と試作まで進められます。</p>
+
+      <div class="timeline-grid fade-in">
+        <div class="timeline-card">
+          <div class="timeline-day">Day 1</div>
+          <h4>💬 ヒアリング・共有</h4>
+          <ul class="compare-list" style="margin-top:8px;">
+            <li>現状ヒアリング</li>
+            <li>Excel・マニュアル共有</li>
+            <li>メール・会話ログ共有</li>
+            <li>課題の仮説整理</li>
+          </ul>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-day">Day 3〜7</div>
+          <h4>🛠 プロトタイプ作成</h4>
+          <ul class="compare-list" style="margin-top:8px;">
+            <li>簡易プロトタイプ作成</li>
+            <li>実データで動作確認</li>
+            <li>削減余地の仮説提示</li>
+            <li><strong>ROI・投資対効果の試算</strong></li>
+          </ul>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-day">Day 8〜14</div>
+          <h4>✔ 修正・準備</h4>
+          <ul class="compare-list" style="margin-top:8px;">
+            <li>フィードバック修正</li>
+            <li>運用想定のすり合わせ</li>
+            <li>実業務投入準備</li>
+            <li>本格導入の判断</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 削減できるのはIT投資だけではない -->
+  <section class="section section-bar-top" id="cost">
+    <div class="container">
+      <div class="section-label fade-in">Cost Reduction</div>
+      <h2 class="section-title section-title-accent fade-in">削減できるのは、IT投資だけではありません</h2>
+      <p class="section-sub fade-in">AIや業務自動化の価値は、単にシステム投資額を下げることだけではありません。<br>日々の業務を回すために発生している人件費、外注費、確認作業、差し戻し、再作業といった運用コストの削減余地が大きいケースが多くあります。</p>
+
+      <div class="cost-cards fade-in">
+        <div class="cost-card">
+          <div class="cost-card-head">
+            <span class="cost-card-icon">👥</span>
+            <span class="cost-card-title">1. 人件費の圧縮</span>
+          </div>
+          <ul>
+            <li><strong>定型作業を削減</strong>し、処理スピードを向上</li>
+            <li>担当者が<strong>本来業務に集中できる</strong>環境を構築</li>
+          </ul>
+        </div>
+        <div class="cost-card">
+          <div class="cost-card-head">
+            <span class="cost-card-icon">🤝</span>
+            <span class="cost-card-title">2. 外注費の圧縮</span>
+          </div>
+          <ul>
+            <li>単純作業の<strong>内製化・半自動化</strong>を実現</li>
+            <li>継続的に発生する<strong>外注コストを大幅に削減</strong></li>
+          </ul>
+        </div>
+        <div class="cost-card">
+          <div class="cost-card-head">
+            <span class="cost-card-icon">💰</span>
+            <span class="cost-card-title">3. 見えにくい運用コストの削減</span>
+          </div>
+          <ul>
+            <li>確認漏れや<strong>差し戻し・再作業を削減</strong></li>
+            <li>属人的な処理を<strong>標準化し、手戻りを防止</strong></li>
+          </ul>
+        </div>
+        <div class="cost-card">
+          <div class="cost-card-head">
+            <span class="cost-card-icon">🧪</span>
+            <span class="cost-card-title">4. 小さく試して見極める</span>
+          </div>
+          <ul>
+            <li>まずは<strong>1つのテーマで試作・検証</strong></li>
+            <li><strong>効果確認後に本導入</strong>し、投資リスクを最小化</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="highlight-strip highlight-strip-dark fade-in" style="margin-top:32px;">
+        <span class="hl-icon">💡</span>
+        <span>削減対象は、システム費だけではありません。<span class="hl-mark">日々積み上がる人件費・外注費・手戻りコスト</span>です。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before / After -->
+  <section class="section section-dark section-bar-top" id="ba">
+    <div class="container">
+      <div class="section-label fade-in">Before / After</div>
+      <h2 class="section-title section-title-accent fade-in">投資判断しやすい改善テーマから始める</h2>
+      <p class="section-sub fade-in">人手不足や高コストな運用にお悩みでも、小さな改善から大きな効果を生み出せます。</p>
+
+      <div class="ba-grid fade-in">
+        <div class="ba-col">
+          <div class="ba-col-title">これまでの課題（Before）</div>
+          <div class="ba-item">
+            <span class="ba-item-icon">🕐</span>
+            <div>
+              <h4>手作業・確認負荷</h4>
+              <p>単純作業に多くのリソースが割かれている</p>
+            </div>
+          </div>
+          <div class="ba-item">
+            <span class="ba-item-icon">⚠️</span>
+            <div>
+              <h4>品質・ミス</h4>
+              <p>転記ミスや見落としが完全になくならない</p>
+            </div>
+          </div>
+          <div class="ba-item">
+            <span class="ba-item-icon">⏳</span>
+            <div>
+              <h4>実務投入スピード</h4>
+              <p>要件定義〜開発で数ヶ月かかり、すぐに使えない</p>
+            </div>
+          </div>
+          <div class="ba-item">
+            <span class="ba-item-icon">¥</span>
+            <div>
+              <h4>初期投資</h4>
+              <p>数百万円単位の投資が必要で判断しにくい</p>
+            </div>
+          </div>
+          <div class="ba-item">
+            <span class="ba-item-icon">👥</span>
+            <div>
+              <h4>人件費・外注費</h4>
+              <p>人手で吸収している運用負荷や外注依存が積み上がる</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ba-arrow">→</div>
+
+        <div class="ba-col after">
+          <div class="ba-col-title">導入後のイメージ（After）</div>
+          <div class="ba-item">
+            <span class="ba-item-icon">🤖</span>
+            <div>
+              <h4>自動化で工数削減</h4>
+              <p>処理時間を大幅短縮し、本質業務へシフト</p>
+            </div>
+          </div>
+          <div class="ba-item">
+            <span class="ba-item-icon">✓</span>
+            <div>
+              <h4>業務品質の均質化</h4>
+              <p>AI×ルールベースで属人性を排除しミスを抑制</p>
+            </div>
+          </div>
+          <div class="ba-item">
+            <span class="ba-item-icon">🚀</span>
+            <div>
+              <h4>最短1週間で試用</h4>
+              <p>プロトタイプですぐに効果検証が可能</p>
+            </div>
+          </div>
+          <div class="ba-item">
+            <span class="ba-item-icon">📈</span>
+            <div>
+              <h4>スモールスタート</h4>
+              <p>効果が見込める業務から小さく始めて段階拡張</p>
+            </div>
+          </div>
+          <div class="ba-item">
+            <span class="ba-item-icon">💰</span>
+            <div>
+              <h4>運用コストの圧縮</h4>
+              <p>少人数でも回しやすく、外注依存も抑えやすい</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-strip highlight-strip-dark fade-in" style="margin-top:32px;">
+        <span class="hl-icon">💡</span>
+        <span>まずは改善余地の大きい1テーマから。<span class="hl-mark">効果が見えたものだけ広げてください</span>。</span>
+      </div>
+      <p class="reduction-board-foot fade-in" style="text-align:left;margin-top:8px;">※改善効果は業務内容や運用条件により異なります。初回診断時に個別試算を行います。</p>
+    </div>
+  </section>
+
+  <!-- 参考事例 -->
+  <section class="section section-bar-top" id="cases">
+    <div class="container">
+      <div class="section-label fade-in">Case Examples</div>
+      <h2 class="section-title section-title-accent fade-in">参考事例</h2>
+      <p class="section-sub fade-in">特定業界専用ではなく、<strong>あらゆる業務課題に対する汎用性</strong>があります。</p>
+
+      <div class="case-grid fade-in">
+        <article class="case-card">
+          <div class="case-head">
+            <span class="case-head-icon">🔍</span>
+            <span class="case-head-title">照合・審査業務の自動化</span>
+          </div>
+          <div class="case-section-label">実施内容</div>
+          <ul>
+            <li>データの重複判定・名寄せ</li>
+            <li>外部DBとの実在確認</li>
+            <li>リスクスコアリング</li>
+            <li>判定理由の証跡保存</li>
+          </ul>
+          <div class="case-effect">
+            <div class="case-effect-title">導入効果（Before / After）</div>
+            <table>
+              <thead><tr><th>項目</th><th>Before</th><th>After</th></tr></thead>
+              <tbody>
+                <tr><th>作業時間</th><td>3時間</td><td>15分<br><span style="font-size:10px">(92%削減)</span></td></tr>
+                <tr><th>判定精度</th><td>手作業57%エラー</td><td>0%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="case-foot"><span>✓</span><span>監査対応可能な履歴管理も実現</span></div>
+        </article>
+
+        <article class="case-card">
+          <div class="case-head">
+            <span class="case-head-icon">✍️</span>
+            <span class="case-head-title">文章作成・情報整形</span>
+          </div>
+          <div class="case-section-label">実施内容</div>
+          <ul>
+            <li>メール/媒体から項目抽出</li>
+            <li>自社フォーマットへの自動整形</li>
+            <li>紹介文・サマリの下書き生成</li>
+            <li>表記ゆれ・NGワードチェック</li>
+          </ul>
+          <div class="case-effect">
+            <div class="case-effect-title">導入効果（Before / After）</div>
+            <table>
+              <thead><tr><th>項目</th><th>Before</th><th>After</th></tr></thead>
+              <tbody>
+                <tr><th>作成時間</th><td>45分</td><td>15分<br><span style="font-size:10px">(70%削減)</span></td></tr>
+                <tr><th>品質</th><td>担当者依存</td><td>標準化</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="case-foot"><span>✓</span><span>入力品質・トーンの平準化を達成</span></div>
+        </article>
+
+        <article class="case-card">
+          <div class="case-head">
+            <span class="case-head-icon">📋</span>
+            <span class="case-head-title">提案書・設計支援</span>
+          </div>
+          <div class="case-section-label">実施内容</div>
+          <ul>
+            <li>商談議事録から要件を抽出</li>
+            <li>コンセプト案の自動生成</li>
+            <li>資料構成案・スライド素案作成</li>
+            <li>想定Q&Aの生成</li>
+          </ul>
+          <div class="case-effect">
+            <div class="case-effect-title">導入効果（Before / After）</div>
+            <table>
+              <thead><tr><th>項目</th><th>Before</th><th>After</th></tr></thead>
+              <tbody>
+                <tr><th>設計時間</th><td>4時間</td><td>30分<br><span style="font-size:10px">(88%削減)</span></td></tr>
+                <tr><th>受注率</th><td>—</td><td>従来比 +15%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="case-foot"><span>✓</span><span>顧客との認識合わせの前倒し</span></div>
+        </article>
+      </div>
+
+      <p class="reduction-board-foot fade-in" style="text-align:left;margin-top:16px;">
+        ※上記は一例です。貴社の特定業務に合わせてカスタマイズしたプロトタイプを作成可能です。<br>
+        ※削減率・効果数値は実績例です。実際の効果は業務内容や導入環境により異なります。
+      </p>
+    </div>
+  </section>
+
+  <!-- 価格プラン -->
+  <section class="section section-dark section-bar-top" id="pricing">
+    <div class="container">
+      <div class="section-label fade-in">Pricing</div>
+      <h2 class="section-title section-title-accent fade-in">価格は「導入」ではなく「見極め」から始められます</h2>
+      <p class="section-sub fade-in">最初から大きく投資する必要はありません。固定費での「小さく試す」アプローチをご用意しています。</p>
+
+      <div class="pricing-grid fade-in">
+        <div class="pricing-card">
+          <div class="pricing-name">ライトプラン</div>
+          <div class="pricing-price"><span class="num">30</span>万円〜</div>
+          <div class="pricing-divider"></div>
+          <ul>
+            <li>1テーマの課題整理</li>
+            <li>簡易プロトタイプ作成</li>
+            <li>技術検証（PoC）</li>
+          </ul>
+        </div>
+        <div class="pricing-card recommended">
+          <div class="pricing-ribbon">おすすめ</div>
+          <div class="pricing-name">スタンダードプラン</div>
+          <div class="pricing-price"><span class="num">50</span>万円〜</div>
+          <div class="pricing-divider"></div>
+          <ul>
+            <li>複数テーマの課題整理</li>
+            <li>実務で使えるツール開発</li>
+            <li>既存データとの連携</li>
+            <li>チーム内での運用テスト</li>
+          </ul>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-name">エンタープライズ</div>
+          <div class="pricing-price"><span class="num">100</span>万円〜</div>
+          <div class="pricing-divider"></div>
+          <ul>
+            <li>部門横断の業務フロー再構築</li>
+            <li>基幹システムとのAPI連携</li>
+            <li>セキュリティ要件対応</li>
+            <li>内製化・運用定着支援</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pricing-notes fade-in">
+        <div class="pricing-note success">
+          <span class="pricing-note-icon">🤝</span>
+          <div>
+            <div class="pricing-note-title">成果報酬型モデルもご相談可能</div>
+            <div>コスト削減だけでなく、ツール開発・業務改善による<strong>「売上向上」にコミット</strong>する支援も行っております。初期費用を抑え、売上成約や利益創出に応じた伴走型開発・支援をご希望の場合もお気軽にご相談ください。</div>
+          </div>
+        </div>
+        <div class="pricing-note">
+          <span class="pricing-note-icon">👤</span>
+          <div>企業導入以外でも、<strong>個人導入からスタート</strong>することもサポートします（企業・個人問わずご相談可能です）。</div>
+        </div>
+      </div>
+      <p class="pricing-foot fade-in">※導入後のサポート運用費用は、提供サービスによって別途ご相談となります。AIのAPI使用量やインフラ費用などに応じてご相談させていただきます。</p>
+    </div>
+  </section>
+
+  <!-- 提供形態 -->
+  <section class="section section-bar-top" id="offering">
+    <div class="container">
+      <div class="section-label fade-in">Engagement Models</div>
+      <h2 class="section-title section-title-accent fade-in">ご要件に合わせた3つの提供形態</h2>
+      <p class="section-sub fade-in">「小さく試す」固定費でのアプローチに加え、ツール開発による「売上向上」にコミットする成果報酬型のご相談も可能です。<br>また、企業導入だけでなく、個人事業主・フリーランス向けの小規模なサポートもご用意しております。</p>
+
+      <div class="offering-grid fade-in">
+        <div class="offering-card">
+          <div class="offering-head">
+            <span class="offering-head-icon">📦</span>
+            <div>
+              <div class="offering-name">固定費プラン</div>
+              <div class="offering-sub">(ライト / スタンダード / エンタープライズ)</div>
+            </div>
+          </div>
+          <div class="offering-block">
+            <span class="offering-block-label">対象</span>
+            <div class="offering-block-body">効率化・コスト削減重視</div>
+          </div>
+          <div class="offering-block">
+            <span class="offering-block-label">費用イメージ</span>
+            <div class="offering-block-body">
+              <ul>
+                <li>30万円〜100万円〜</li>
+                <li>(フェーズ・規模による)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="offering-block">
+            <span class="offering-block-label">向いているケース</span>
+            <div class="offering-block-body">予算内で段階導入、ROI重視</div>
+          </div>
+        </div>
+
+        <div class="offering-card success">
+          <div class="offering-head">
+            <span class="offering-head-icon">🤝</span>
+            <div>
+              <div class="offering-name">成果報酬型モデル</div>
+              <div class="offering-sub">(売上成約・事業成長へのコミット)</div>
+            </div>
+          </div>
+          <div class="offering-block">
+            <span class="offering-block-label">対象</span>
+            <div class="offering-block-body">新規事業・売上拡大重視</div>
+          </div>
+          <div class="offering-block">
+            <span class="offering-block-label">費用イメージ</span>
+            <div class="offering-block-body">
+              <ul>
+                <li>初期費用:抑えめ（要相談）</li>
+                <li>成果報酬:成果に応じたシェア</li>
+              </ul>
+            </div>
+          </div>
+          <div class="offering-block">
+            <span class="offering-block-label">向いているケース</span>
+            <div class="offering-block-body">ツール開発を売上アップに直結</div>
+          </div>
+        </div>
+
+        <div class="offering-card personal">
+          <div class="offering-head">
+            <span class="offering-head-icon">👤</span>
+            <div>
+              <div class="offering-name">個人導入サポート</div>
+              <div class="offering-sub">(小規模・スモールスタート)</div>
+            </div>
+          </div>
+          <div class="offering-block">
+            <span class="offering-block-label">対象</span>
+            <div class="offering-block-body">個人・フリーランス・小規模</div>
+          </div>
+          <div class="offering-block">
+            <span class="offering-block-label">費用イメージ</span>
+            <div class="offering-block-body">
+              <ul>
+                <li>予算に応じた柔軟なプラン</li>
+                <li>企業向けより小規模な設定</li>
+              </ul>
+            </div>
+          </div>
+          <div class="offering-block">
+            <span class="offering-block-label">向いているケース</span>
+            <div class="offering-block-body">自身の業務課題解決、AI化の第一歩</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 実績 A/B/C -->
+  <section class="section section-dark section-bar-top" id="works">
+    <div class="container">
+      <div class="section-label fade-in">Case Studies</div>
+      <h2 class="section-title section-title-accent fade-in">実績 / Appendix</h2>
       <p class="section-sub fade-in">業務理解から自動取得、AI整形、運用イメージの可視化まで、一連のフローを動く形に落とし込んだ案件です。</p>
 
-      <div class="work-flow fade-in">
-        <div class="work-flow-title">プロジェクトで実装した業務フロー</div>
-        <div class="work-flow-track">
-          <div class="work-flow-step">求人URL / メール文面</div>
-          <div class="work-flow-arrow">→</div>
-          <div class="work-flow-step">情報取得・整形</div>
-          <div class="work-flow-arrow">→</div>
-          <div class="work-flow-step">AIで下書き生成</div>
-          <div class="work-flow-arrow">→</div>
-          <div class="work-flow-step">人が確認して運用</div>
+      <article class="featured-work fade-in">
+        <div class="featured-work-head">
+          <div class="featured-work-num">実績 01 / 03 ─ AIプロトタイプ開発 / 業務自動化</div>
+          <div class="featured-work-title">実績A ─ 求人広告運用自動化システム</div>
+          <div class="featured-work-sub">7ステップの自動化パイプライン | 重複判定・データ変換・実在性確認をワンストップ自動化</div>
         </div>
-      </div>
-
-      <div class="works-grid fade-in">
-        <article class="work-card work-card-featured">
-          <div class="work-card-head">
-            <div>
-              <div class="work-category">AI Automation / HR Workflow</div>
-              <h3>リユース業界向け 求人作成支援システム</h3>
+        <div class="featured-work-body">
+          <div class="featured-panel">
+            <div class="featured-panel-head"><span>🧩</span><span>プロジェクト概要</span></div>
+            <ul>
+              <li><strong>データロード:</strong> CSV/XLS/XLSXファイル対応、処理上限チェック</li>
+              <li><strong>差分フィルタリング:</strong> 前回処理済みデータとの差分を抽出、更新分のみ処理対象に絞り込み</li>
+              <li><strong>タイトル正規化（AI補助）:</strong> ルールベース優先 → LLMで補完、バッチ100件単位</li>
+              <li><strong>広告タイトル生成+職種分類:</strong> Claude APIでタイトル自動生成（バッチ50件単位）、職種説明文から自動分類</li>
+              <li><strong>施設実在性確認:</strong> Tavily Search APIで施設情報検索、Claude APIで判定（A〜Dスコア）、並列実行（最大8並列）</li>
+              <li><strong>証拠取得:</strong> C/D判定案件の証拠画像を自動取得</li>
+              <li><strong>結果出力:</strong> 広告完成版Excel出力、検証レポート出力、重複判定報告書出力</li>
+            </ul>
+          </div>
+          <div class="featured-panel">
+            <div class="featured-panel-head"><span>📈</span><span>実測データに基づく成果指標(約40日間)</span></div>
+            <div class="metric-grid">
+              <div class="metric-cell">
+                <span class="metric-cell-icon">📦</span>
+                <div>
+                  <div class="metric-cell-title">累計処理件数</div>
+                  <div class="metric-cell-value">12,103件（手作業換算 76営業日分）</div>
+                </div>
+              </div>
+              <div class="metric-cell">
+                <span class="metric-cell-icon">💴</span>
+                <div>
+                  <div class="metric-cell-title">人件費削減</div>
+                  <div class="metric-cell-value">約54万円 / 月（約597時間削減）</div>
+                </div>
+              </div>
+              <div class="metric-cell">
+                <span class="metric-cell-icon">⚡</span>
+                <div>
+                  <div class="metric-cell-title">処理スピード</div>
+                  <div class="metric-cell-value">手作業の約75倍（3分→2.42秒/件）</div>
+                </div>
+              </div>
+              <div class="metric-cell">
+                <span class="metric-cell-icon">🛡</span>
+                <div>
+                  <div class="metric-cell-title">死角解消(掲載リスク回避)</div>
+                  <div class="metric-cell-value">月平均 約2,500件のリスク候補を検知</div>
+                </div>
+              </div>
             </div>
-            <span class="work-status">Prototype</span>
+            <div class="featured-callout">
+              <strong>💡 単なる時短ではなく「実現可能性の創出」</strong><br>
+              40日間で605時間相当の作業は物理的に不可能であり、<strong>実質、人で実施できていなかった領域</strong>です。システム化により死角を100%カバーし、初めて全体チェックが実現しました。
+            </div>
+            <div class="score-row">
+              <div class="score-row-title">スコア別実測（掲載リスク判定）</div>
+              <div class="score-row-items">
+                <div class="score-cell a"><strong>A: 3,076件 (25.4%)</strong>実在確認OK</div>
+                <div class="score-cell b"><strong>B: 5,676件 (46.9%)</strong>低リスクスキップ</div>
+                <div class="score-cell c"><strong>C: 2,957件 (24.4%)</strong>確証不足(要確認)</div>
+                <div class="score-cell d"><strong>D: 394件 (3.3%)</strong>不整合(掲載NG候補)</div>
+              </div>
+              <p class="reduction-board-foot" style="text-align:left;margin-top:6px;">※本数値は 2026/3/23〜5/1 の本番運用実測データです。</p>
+            </div>
           </div>
-          <p>
-            求人URLやメール文面を起点に、求人情報の取得、管理画面向けの項目マッピング、AIによる求人下書き生成までを支援するプロジェクト。
-            認証付き採用管理画面からのデータ取得、設定ファイルによる項目管理、Streamlitベースの確認フローまで実装しました。
-          </p>
-          <div class="work-metrics">
-            <span class="work-metric-tag highlight">3社の採用管理画面に対応</span>
-            <span class="work-metric-tag">URL / コピペ入力の両対応</span>
-            <span class="work-metric-tag">AI整形で求人下書きを自動生成</span>
-            <span class="work-metric-tag">fields.json / tags.json で設定駆動</span>
-            <span class="work-metric-tag">テスト実装あり</span>
-          </div>
-        </article>
+        </div>
+        <div class="featured-tech-row">
+          <span class="featured-tech-label">技術スタック</span>
+          <span class="featured-tech-pill">🐍 Python (Pandas, Openpyxl)</span>
+          <span class="featured-tech-pill brand-ai">Claude 3.5 Sonnet API</span>
+          <span class="featured-tech-pill">🔍 Tavily Search API</span>
+          <span class="featured-tech-pill">🤖 Playwright (自動証跡取得)</span>
+        </div>
+      </article>
 
-        <article class="work-card">
-          <div class="work-category">What We Built</div>
-          <h3>実装を業務フローまで接続</h3>
-          <p>スクレイパー単体ではなく、入力、整形、確認、設定更新までを含めて、運用の流れごと設計した点がこの案件の軸です。</p>
-          <div class="work-metrics">
-            <span class="work-metric-tag">Python</span>
-            <span class="work-metric-tag">OpenAI API</span>
-            <span class="work-metric-tag">Streamlit</span>
+      <article class="featured-work fade-in">
+        <div class="featured-work-head">
+          <div class="featured-work-num">実績 02 / 03 ─ AI整形 / RPA / 内製化支援</div>
+          <div class="featured-work-title">実績B ─ 求人作成支援システム</div>
+          <div class="featured-work-sub">求人情報の取り込みから管理画面登録までを一気通貫で支援</div>
+        </div>
+        <div class="featured-work-body">
+          <div class="featured-panel">
+            <div class="featured-panel-head"><span>🧩</span><span>プロジェクト概要</span></div>
+            <ul>
+              <li><strong>【背景】</strong>業界専門の求人媒体向けの求人作成支援システム。</li>
+              <li><strong>【課題】</strong>月100件規模の求人作成を1〜2人で担当し、ボトルネックが常態化。求人依頼元が多岐（求人企業メール/提携先ATS/PDF/Indeed等URL）にわたり、作成担当者に作業が集中・属人化。</li>
+              <li><strong>マルチソース:</strong> 6経路対応：URL/コピペ/PDF/ATS自動取得/メール/Driveフォルダから自動取り込み</li>
+              <li><strong>AI整形:</strong> Claude AIでJSON構造化：生テキスト→構造化JSON（17項目）に自動整形、63タグ自動選定</li>
+              <li><strong>ATS対応:</strong> 主要ATS 8社超対応：多様な採用管理システムからの自動取得を実現</li>
+              <li><strong>提供版:</strong> Windows / Mac版：現場導入を簡素化したアプリ版を提供</li>
+            </ul>
           </div>
-        </article>
-
-        <article class="work-card">
-          <div class="work-category">Why It Matters</div>
-          <h3>手作業の求人作成を標準化</h3>
-          <p>媒体ごとの差分や入力揺れを吸収しながら、人の最終確認を前提にした下書き自動化で、スピードと品質の両立を狙いました。</p>
-          <div class="work-metrics">
-            <span class="work-metric-tag">業務標準化</span>
-            <span class="work-metric-tag">AI補完</span>
-            <span class="work-metric-tag">人の最終確認</span>
+          <div class="featured-panel">
+            <div class="featured-panel-head"><span>📈</span><span>成果指標</span></div>
+            <div class="metric-grid">
+              <div class="metric-cell">
+                <span class="metric-cell-icon">⏱</span>
+                <div>
+                  <div class="metric-cell-title">工数削減 約85%</div>
+                  <div class="metric-cell-value">1件あたり 30〜45分 → 3〜5分</div>
+                </div>
+              </div>
+              <div class="metric-cell">
+                <span class="metric-cell-icon">🗂</span>
+                <div>
+                  <div class="metric-cell-title">対応ATS数 8+ 社</div>
+                  <div class="metric-cell-value">主要な採用管理システムに対応</div>
+                </div>
+              </div>
+              <div class="metric-cell">
+                <span class="metric-cell-icon">🔌</span>
+                <div>
+                  <div class="metric-cell-title">入力ソース 6 経路</div>
+                  <div class="metric-cell-value">URL/コピペ/PDF/ATS/メール/Drive</div>
+                </div>
+              </div>
+              <div class="metric-cell">
+                <span class="metric-cell-icon">💻</span>
+                <div>
+                  <div class="metric-cell-title">Windows / Mac版を提供</div>
+                  <div class="metric-cell-value">現場導入を簡素化したアプリ版</div>
+                </div>
+              </div>
+            </div>
           </div>
-        </article>
-      </div>
+        </div>
+        <div class="featured-tech-row">
+          <span class="featured-tech-label">言語・アプリ</span>
+          <span class="featured-tech-pill">🐍 Python 3</span>
+          <span class="featured-tech-pill">🟢 Node.js</span>
+          <span class="featured-tech-pill">Streamlit</span>
+          <span class="featured-tech-pill brand-ai">Claude API</span>
+          <span class="featured-tech-pill brand-ai">OpenAI API</span>
+          <span class="featured-tech-pill">Playwright</span>
+          <span class="featured-tech-pill">requests / bs4 / pypdf</span>
+        </div>
+        <div class="featured-tech-row" style="border-top:none;padding-top:8px;">
+          <span class="featured-tech-label">自動化・テスト</span>
+          <span class="featured-tech-pill">Google Apps Script</span>
+          <span class="featured-tech-pill">GitHub Actions CI</span>
+          <span class="featured-tech-pill">pytest</span>
+        </div>
+        <div class="featured-tech-row" style="border-top:none;padding-top:8px;">
+          <span class="featured-tech-label">配布・運用環境</span>
+          <span class="featured-tech-pill">PyInstaller</span>
+          <span class="featured-tech-pill">.pkg / .dmg / Inno Setup</span>
+          <span class="featured-tech-pill">Dockerfile</span>
+          <span class="featured-tech-pill">AWS Windows RDP</span>
+        </div>
+        <p class="reduction-board-foot" style="text-align:right;margin-top:8px;">※ プロジェクト名は社内呼称を含みます。詳細はお打ち合わせにて。</p>
+      </article>
 
-      <p class="work-note fade-in">業務要件の整理から、データ取得、AI活用、運用導線の設計までをまとめて扱えることが、テイクサイドの実装スタイルです。</p>
+      <article class="featured-work fade-in">
+        <div class="featured-work-head">
+          <div class="featured-work-num">実績 03 / 03 ─ AI運用支援 / 提案業務の高度化</div>
+          <div class="featured-work-title">実績C ─ 会議記録支援ツール + 提案支援ツール</div>
+          <div class="featured-work-sub">営業・設計プロセスを支援する2プロダクトを統合運用</div>
+        </div>
+        <div class="featured-work-body">
+          <div class="featured-panel">
+            <div class="featured-panel-head"><span>🧩</span><span>プロジェクト概要</span></div>
+            <ul>
+              <li><strong>会議記録支援ツール:</strong> 会議の文字起こしを要約・構造化し、将来のシステム連携を視野に設計</li>
+              <li><strong>提案支援ツール:</strong> 特定業務向けの提案入力支援と、AIによる提案内容生成プロトタイプを本番環境に展開</li>
+              <li>テキスト生成と画像生成LLMを組み合わせ、提案資料の自動生成までを実現</li>
+              <li>フロントとバックエンドを統合したモノレポ運用で、将来的な機能拡張を見据えた開発フローを構築</li>
+            </ul>
+          </div>
+          <div class="featured-panel">
+            <div class="featured-panel-head"><span>📈</span><span>成果指標</span></div>
+            <div class="metric-grid">
+              <div class="metric-cell">
+                <span class="metric-cell-icon">🔗</span>
+                <div>
+                  <div class="metric-cell-title">2プロダクト同時運用</div>
+                  <div class="metric-cell-value">会議記録支援 + 提案支援</div>
+                </div>
+              </div>
+              <div class="metric-cell">
+                <span class="metric-cell-icon">🚀</span>
+                <div>
+                  <div class="metric-cell-title">本番展開済み</div>
+                  <div class="metric-cell-value">クラウド環境にデプロイ済み</div>
+                </div>
+              </div>
+            </div>
+            <div class="featured-panel-head" style="margin-top:18px;"><span>🧰</span><span>技術スタック・構成図</span></div>
+            <div style="display:flex;flex-direction:column;gap:10px;font-size:12px;">
+              <div>
+                <div style="font-weight:700;color:var(--text-secondary);margin-bottom:6px;">言語・フレームワーク</div>
+                <div class="featured-tech-row" style="padding-top:0;border-top:none;">
+                  <span class="featured-tech-pill">Next.js 15 (App Router) / React 19</span>
+                  <span class="featured-tech-pill">TypeScript 5</span>
+                  <span class="featured-tech-pill">Tailwind CSS 4</span>
+                </div>
+              </div>
+              <div>
+                <div style="font-weight:700;color:var(--text-secondary);margin-bottom:6px;">AI・状態管理</div>
+                <div class="featured-tech-row" style="padding-top:0;border-top:none;">
+                  <span class="featured-tech-pill brand-ai">Google Gemini API (2.5 Pro + Imagen)</span>
+                  <span class="featured-tech-pill">zustand / Zod</span>
+                </div>
+              </div>
+              <div>
+                <div style="font-weight:700;color:var(--text-secondary);margin-bottom:6px;">テスト・デプロイ</div>
+                <div class="featured-tech-row" style="padding-top:0;border-top:none;">
+                  <span class="featured-tech-pill">vitest</span>
+                  <span class="featured-tech-pill">Playwright</span>
+                  <span class="featured-tech-pill">Vercel</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="reduction-board-foot" style="text-align:left;margin-top:8px;">※ 守秘義務のため一部情報を抽象化して記載しています。詳細はお打ち合わせにて。</p>
+      </article>
     </div>
   </section>
 
-
-  <!-- Technology Stack -->
-  <section class="section" id="tech">
-    <div class="container">
-      <div class="section-label fade-in">Technology</div>
-      <h2 class="section-title fade-in">技術スタック</h2>
-      <p class="section-sub fade-in">最新鋭のツールを使いこなすプロフェッショナルとして、ビジネス要件に最適な技術を選定します。</p>
-
-      <div class="tech-groups fade-in">
-        <div class="tech-group">
-          <div class="tech-group-label">Languages / Frameworks</div>
-          <div class="tech-pills">
-            <span class="tech-pill">TypeScript</span>
-            <span class="tech-pill">Next.js</span>
-            <span class="tech-pill">React Native</span>
-            <span class="tech-pill">Python</span>
-            <span class="tech-pill">Node.js</span>
-            <span class="tech-pill">Go</span>
-          </div>
-        </div>
-        <div class="tech-group">
-          <div class="tech-group-label">Infrastructure / Tools</div>
-          <div class="tech-pills">
-            <span class="tech-pill">AWS (CDK)</span>
-            <span class="tech-pill">Docker</span>
-            <span class="tech-pill">Vercel</span>
-            <span class="tech-pill">Expo</span>
-            <span class="tech-pill">Vitest</span>
-            <span class="tech-pill">Biome</span>
-          </div>
-        </div>
-        <div class="tech-group tech-group-ai">
-          <div class="tech-group-label">AI / Next-Gen</div>
-          <div class="tech-pills">
-            <span class="tech-pill tech-pill-ai">OpenAI API</span>
-            <span class="tech-pill tech-pill-ai">Claude</span>
-            <span class="tech-pill tech-pill-ai">Cursor</span>
-            <span class="tech-pill tech-pill-ai">AI-driven development</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Us -->
-  <section class="section section-dark" id="why">
+  <!-- 強み -->
+  <section class="section section-bar-top" id="why">
     <div class="container">
       <div class="section-label fade-in">Why Us</div>
-      <h2 class="section-title fade-in">テイクサイドの強み</h2>
+      <h2 class="section-title section-title-accent fade-in">テイクサイドの強み</h2>
 
       <div class="why-cards fade-in">
         <div class="why-card">
@@ -332,86 +1116,52 @@
     </div>
   </section>
 
-  <!-- Rollout -->
-  <section class="section" id="rollout">
-    <div class="container">
-      <div class="section-label fade-in">Rollout</div>
-      <h2 class="section-title fade-in">既存環境を壊さず、周辺業務から始められます</h2>
-      <p class="section-sub fade-in">大規模なリプレイスは不要です。まず困っている部分だけを切り出し、改善効果が確認できたら横展開します。</p>
-
-      <div class="rollout-grid fade-in">
-        <article class="rollout-card">
-          <div class="rollout-step">Step 1</div>
-          <h3>周辺業務から着手</h3>
-          <p>Excel / CSV連携、手作業データの整形、メールやチャットからの情報抽出など、即日から着手しやすい工程を対象にします。</p>
-        </article>
-        <article class="rollout-card">
-          <div class="rollout-step">Step 2</div>
-          <h3>高度な判断を支援</h3>
-          <p>審査・判定業務の半自動化、判定理由のログ保存、下書き生成など、人の確認工程を残したまま負荷を下げます。</p>
-        </article>
-        <article class="rollout-card">
-          <div class="rollout-step">Step 3</div>
-          <h3>業務全体へ統合</h3>
-          <p>基幹システム連携、RPA連携、複数部門への展開まで含めて、効果が見えた後に無理なく拡張します。</p>
-        </article>
-      </div>
-
-      <div class="timeline-grid fade-in">
-        <div class="timeline-card">
-          <div class="timeline-day">Day 1</div>
-          <h4>ヒアリング・共有</h4>
-          <p>現状ヒアリング、Excel・マニュアル・メール履歴の共有、課題仮説の整理。</p>
-        </div>
-        <div class="timeline-card">
-          <div class="timeline-day">Day 3-7</div>
-          <h4>プロトタイプ作成</h4>
-          <p>簡易プロトタイプ作成、実データで動作確認、削減余地とROI仮説を提示。</p>
-        </div>
-        <div class="timeline-card">
-          <div class="timeline-day">Day 8-14</div>
-          <h4>修正・導入判断</h4>
-          <p>フィードバック反映、運用想定のすり合わせ、実業務投入の判断材料を整備。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Contact -->
-  <section class="section section-cta" id="contact">
+  <section class="section section-cta section-bar-top" id="contact">
     <div class="container cta-content">
       <div class="section-label fade-in">Contact</div>
-      <h2 class="section-title fade-in">まずは、動くものを見て判断してください</h2>
+      <h2 class="section-title section-title-accent fade-in">まずは、動くものを見て判断してください</h2>
       <p class="section-sub fade-in">
-        要件が固まっていなくても問題ありません。<br>
-        手元の資料から着手できるように進めます。
+        AIや業務改善の相談で、最初から完璧な要件がそろっていることは多くありません。<br>
+        だからこそ、最初の一歩は「全部決めること」ではなく、「まず動くものを見てみること」だと考えています。<br>
+        テイクサイドでは、現場資料や既存フォーマット、日々の運用情報をもとに、短期間でプロトタイプや改善案をご提示します。
       </p>
 
-      <div class="contact-steps fade-in">
-        <div class="contact-step">
-          <div class="contact-step-num">1</div>
-          <h4>デモ相談</h4>
-          <p>現状の悩みと改善したい業務を確認します。</p>
+      <div class="process-circles fade-in">
+        <div class="process-circle-cell">
+          <div class="process-circle outlined">💬</div>
+          <div class="process-label">1. デモ相談</div>
         </div>
-        <div class="contact-step">
-          <div class="contact-step-num">2</div>
-          <h4>資料共有</h4>
-          <p>Excel、マニュアル、メール履歴、会話ログ等を共有いただきます。</p>
+        <div class="process-circle-cell">
+          <div class="process-circle">📄</div>
+          <div class="process-label">2. 資料共有</div>
         </div>
-        <div class="contact-step">
-          <div class="contact-step-num">3</div>
-          <h4>プロトタイプ確認</h4>
-          <p>動作イメージと改善余地を見ながら、次の判断を行います。</p>
+        <div class="process-circle-cell">
+          <div class="process-circle">💻</div>
+          <div class="process-label">3. プロトタイプ確認</div>
         </div>
-        <div class="contact-step">
-          <div class="contact-step-num">4</div>
-          <h4>投資判断</h4>
-          <p>導入するか、どこまで進めるかを実物ベースで決められます。</p>
+        <div class="process-circle-cell">
+          <div class="process-circle">🤝</div>
+          <div class="process-label">4. 投資判断</div>
         </div>
       </div>
 
+      <div class="highlight-strip fade-in" style="max-width:720px;margin:0 auto 32px;">
+        <span class="hl-icon">ℹ️</span>
+        <div>
+          ・要件が固まっていなくてもOK<br>
+          ・手元の資料から着手可能<br>
+          ・小さく試し、合えば広げる進め方を推奨
+        </div>
+      </div>
+
+      <p class="legacy-conclusion fade-in" style="color:var(--accent-blue-deep);font-size:22px;margin-bottom:24px;">
+        動くもの至上主義。<br>
+        構想を、動く仕組みへ。最短距離で。
+      </p>
+
       <div class="contact-email fade-in">
-        <a href="mailto:takeshi.ishida@takeside.org" class="btn btn-primary">takeshi.ishida@takeside.org</a>
+        <a href="mailto:takeshi.ishida@takeside.org" class="btn btn-primary">✉ takeshi.ishida@takeside.org</a>
       </div>
 
       <div class="company-info fade-in">
@@ -429,6 +1179,10 @@
               <th>事業内容</th>
               <td>AI導入コンサルティング / プロトタイプ・ツール開発 / システム開発支援</td>
             </tr>
+            <tr>
+              <th>連絡先</th>
+              <td>takeshi.ishida@takeside.org</td>
+            </tr>
           </table>
           <p class="company-note">*takeside = takeshi + side</p>
         </div>
@@ -440,8 +1194,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-logo">
-        <img src="logo.svg" alt="TAKESIDE" class="footer-logo-img" loading="lazy">
-        <span class="footer-logo-text">テイクサイド株式会社</span>
+        <img src="logo-takeside-mono.svg" alt="TAKESIDE INC." class="footer-logo-img" loading="lazy">
       </div>
       <p class="footer-copy">&copy; 2026 Takeside Inc. All rights reserved.</p>
     </div>

@@ -2059,7 +2059,7 @@ body {
 }
 
 .highlight-strip .hl-mark {
-  color: var(--accent-red);
+  color: var(--accent-blue);
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-thickness: 2px;
@@ -2125,8 +2125,8 @@ body {
 
 .legacy-flow-step.warn {
   background: #fff;
-  border: 2px solid var(--accent-red);
-  color: var(--accent-red);
+  border: 2px solid var(--accent-blue-soft);
+  color: var(--text-primary);
 }
 
 .legacy-flow-arrow {
@@ -2137,8 +2137,8 @@ body {
 
 .legacy-warning-box {
   margin-top: 16px;
-  border-left: 4px solid var(--accent-red);
-  background: var(--accent-red-soft);
+  border-left: 4px solid var(--accent-blue);
+  background: var(--bg-secondary);
   border-radius: 6px;
   padding: 14px 18px;
 }
@@ -2146,7 +2146,7 @@ body {
 .legacy-warning-box-title {
   font-size: 13px;
   font-weight: 700;
-  color: var(--accent-red);
+  color: var(--text-primary);
   margin-bottom: 6px;
 }
 
@@ -2162,7 +2162,7 @@ body {
 .legacy-warning-box li::before {
   content: '•';
   margin-right: 8px;
-  color: var(--accent-red);
+  color: var(--accent-blue);
 }
 
 .legacy-conclusion {
@@ -2170,7 +2170,7 @@ body {
   text-align: center;
   font-size: 18px;
   font-weight: 800;
-  color: var(--accent-red);
+  color: var(--text-primary);
 }
 
 /* --- 投資0円バッジ --- */

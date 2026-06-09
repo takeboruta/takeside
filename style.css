@@ -567,7 +567,7 @@ body {
 .vs-text {
   font-size: 11px;
   font-weight: 700;
-  color: var(--accent-red);
+  color: var(--accent-blue);
   letter-spacing: 0.05em;
 }
 
@@ -642,7 +642,7 @@ body {
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--accent-red);
+  background: var(--accent-blue);
   opacity: 0;
   transition: var(--transition);
 }
@@ -816,7 +816,7 @@ body {
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--accent-red);
+  background: var(--accent-blue);
   border-radius: 0 0 var(--radius) var(--radius);
   opacity: 0.4;
 }
@@ -832,7 +832,7 @@ body {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--accent-red);
+  background: var(--accent-blue);
   box-shadow: 0 0 8px rgba(231, 76, 60, 0.35);
 }
 
@@ -1982,7 +1982,7 @@ body {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: var(--accent-red);
+  background: var(--accent-blue);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6.2L4.6 9 10 3.4' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
@@ -2076,8 +2076,8 @@ body {
 }
 
 .highlight-strip-warning {
-  background: var(--accent-red-soft);
-  border-left-color: var(--accent-red);
+  background: var(--accent-blue-soft);
+  border-left-color: var(--accent-blue);
   color: var(--text-primary);
 }
 
@@ -2369,7 +2369,7 @@ body {
 .reduction-item-rate {
   font-size: 14px;
   font-weight: 800;
-  color: var(--accent-red);
+  color: var(--accent-blue);
   white-space: nowrap;
 }
 
@@ -2739,7 +2739,7 @@ body {
 
 .pricing-note.success {
   background: #fff;
-  border: 1px solid var(--accent-red);
+  border: 1px solid var(--accent-blue);
   border-radius: var(--radius-sm);
   padding: 16px 20px;
 }
@@ -2751,12 +2751,12 @@ body {
 }
 
 .pricing-note.success .pricing-note-icon {
-  color: var(--accent-red);
+  color: var(--accent-blue);
 }
 
 .pricing-note-title {
   font-weight: 800;
-  color: var(--accent-red);
+  color: var(--accent-blue);
   margin-bottom: 4px;
 }
 
@@ -2785,7 +2785,7 @@ body {
 }
 
 .offering-card.success {
-  border-top-color: var(--accent-red);
+  border-top-color: var(--accent-blue);
 }
 
 .offering-card.personal {
@@ -2804,7 +2804,7 @@ body {
 }
 
 .offering-card.success .offering-head-icon {
-  color: var(--accent-red);
+  color: var(--accent-blue);
 }
 
 .offering-card.personal .offering-head-icon {
@@ -2818,7 +2818,7 @@ body {
 }
 
 .offering-card.success .offering-name {
-  color: var(--accent-red);
+  color: var(--accent-blue);
 }
 
 .offering-card.personal .offering-name {
@@ -2854,8 +2854,8 @@ body {
 }
 
 .offering-card.success .offering-block-label {
-  background: var(--accent-red-soft);
-  color: var(--accent-red);
+  background: var(--accent-blue-soft);
+  color: var(--accent-blue);
 }
 
 .offering-card.personal .offering-block-label {

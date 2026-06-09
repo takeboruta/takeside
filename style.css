@@ -2274,7 +2274,7 @@ body {
 }
 
 .approach-result-block.bad {
-  background: var(--accent-red-soft);
+  background: var(--bg-tertiary);
 }
 
 .approach-result-block.good {
@@ -2304,7 +2304,7 @@ body {
 }
 
 .approach-result-block.bad .approach-result-title {
-  color: var(--accent-red);
+  color: var(--text-primary);
 }
 
 .approach-result-block.good .approach-result-title {

@@ -3317,3 +3317,34 @@ body {
   .faq-q::before { width: 26px; height: 26px; font-size: 13px; }
   .faq-a { padding: 0 18px 18px 18px; }
 }
+
+/* ===== ページ案内カード（トップ導線）===== */
+.nav-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.nav-card {
+  display: block;
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--accent-blue-soft);
+  border-radius: 12px;
+  padding: 24px 26px;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow .2s ease, border-color .2s ease, transform .2s ease;
+}
+.nav-card:hover {
+  border-color: var(--accent-blue-light);
+  box-shadow: 0 8px 24px rgba(26, 58, 110, .1);
+  transform: translateY(-2px);
+}
+.nav-card h3 { font-size: 18px; font-weight: 800; color: var(--accent-blue); margin-bottom: 8px; }
+.nav-card p { font-size: 14px; line-height: 1.7; color: var(--text-secondary); }
+.nav-card-arrow { position: absolute; top: 22px; right: 24px; color: var(--accent-blue-light); font-weight: 800; font-size: 18px; }
+@media (max-width: 600px) {
+  .nav-cards { grid-template-columns: 1fr; }
+}

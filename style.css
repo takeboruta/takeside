@@ -3397,3 +3397,14 @@ body {
 @media (max-width: 768px) {
   .usecase-grid { grid-template-columns: 1fr; }
 }
+
+.footer-note {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  line-height: 1.6;
+}
+.footer-note a {
+  color: var(--accent-blue-light);
+  text-decoration: underline;
+}

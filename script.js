@@ -62,3 +62,16 @@ const navObserver = new IntersectionObserver(
 );
 
 sections.forEach((s) => navObserver.observe(s));
+
+// ===== お問い合わせ(mailto)クリックを計測（GA4） =====
+document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+  link.addEventListener('click', () => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'contact_click', {
+        event_category: 'engagement',
+        event_label: link.getAttribute('href').replace('mailto:', ''),
+        transport_type: 'beacon',
+      });
+    }
+  });
+});

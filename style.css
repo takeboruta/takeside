@@ -3408,3 +3408,55 @@ body {
   color: var(--accent-blue-light);
   text-decoration: underline;
 }
+
+/* ===== AIエージェント投入の価値 ===== */
+.agent-value { margin-top: 40px; }
+.agent-value-lead {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--bg-soft-blue);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+.agent-value-icon { font-size: 26px; flex-shrink: 0; line-height: 1.4; }
+.agent-value-lead p { margin: 0; font-size: 15px; line-height: 1.85; color: var(--text-secondary); }
+.agent-value-lead strong { color: var(--text-primary); }
+.agent-map { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.agent-map-col-head,
+.agent-map-row { display: grid; grid-template-columns: 1fr 32px 1.4fr; gap: 12px; align-items: stretch; }
+.agent-map-col-head { padding: 0 4px 2px; align-items: center; }
+.agent-map-col-label { font-size: 12px; font-weight: 800; color: var(--accent-blue); letter-spacing: .02em; }
+.agent-map-col-head .agent-map-arrow { visibility: hidden; }
+.agent-map-from {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--accent-blue-soft);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 14px; font-weight: 700; color: var(--text-primary);
+}
+.agent-map-from span { font-size: 18px; }
+.agent-map-arrow { display: grid; place-items: center; color: var(--accent-blue-light); font-weight: 800; font-size: 18px; }
+.agent-map-to {
+  display: flex; align-items: center;
+  background: var(--accent-blue); color: #fff;
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 14px; line-height: 1.6; font-weight: 500;
+}
+.agent-effects { background: var(--bg-secondary); border-radius: 12px; padding: 22px 24px; }
+.agent-effects-title { font-size: 15px; font-weight: 800; color: var(--text-primary); margin-bottom: 16px; }
+.agent-effects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 24px; }
+.agent-effect { display: flex; gap: 12px; align-items: flex-start; font-size: 13.5px; line-height: 1.6; color: var(--text-secondary); }
+.agent-effect > span { font-size: 20px; flex-shrink: 0; }
+.agent-effect strong { display: block; color: var(--text-primary); font-size: 14px; margin-bottom: 2px; }
+@media (max-width: 768px) {
+  .agent-effects-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .agent-map-col-head { display: none; }
+  .agent-map-row { grid-template-columns: 1fr; gap: 6px; }
+  .agent-map-row .agent-map-arrow { transform: rotate(90deg); height: 18px; }
+}

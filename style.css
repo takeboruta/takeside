@@ -3348,3 +3348,52 @@ body {
 @media (max-width: 600px) {
   .nav-cards { grid-template-columns: 1fr; }
 }
+
+/* ===== ユースケース AI×〇〇 ===== */
+.usecase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.usecase-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--accent-blue-soft);
+  border-radius: 14px;
+  padding: 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+}
+.usecase-card:hover {
+  box-shadow: 0 10px 28px rgba(26, 58, 110, .12);
+  transform: translateY(-3px);
+  border-color: var(--accent-blue-light);
+}
+.usecase-key {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--accent-blue);
+  letter-spacing: .01em;
+}
+.usecase-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+.usecase-metric {
+  margin-top: auto;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: var(--bg-soft-blue);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+.usecase-metric strong { color: var(--accent-blue); font-weight: 800; }
+.usecase-link { font-size: 13px; font-weight: 700; color: var(--accent-blue-light); }
+@media (max-width: 768px) {
+  .usecase-grid { grid-template-columns: 1fr; }
+}

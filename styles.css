@@ -273,14 +273,40 @@ h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.18; letter-spacing: -0.
 }
 .pipe-foot .stat b { color: var(--accent-2); font-size: 15px; }
 
+/* reduce bar-chart in the lower-left cell */
+.pipe-reduce { display: flex; flex-direction: column; gap: 11px; }
+.pipe-reduce .rd-label {
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink-3); margin-bottom: 2px;
+}
+.pipe-reduce .rd-row { display: grid; grid-template-columns: 30px 1fr; align-items: center; gap: 9px; }
+.pipe-reduce .rd-k { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); text-align: right; }
+.pipe-reduce .rd-bar {
+  position: relative; height: 14px; border-radius: 2px;
+  background: var(--paper-2); display: flex; align-items: center; overflow: visible;
+}
+.pipe-reduce .rd-fill { display: block; height: 100%; border-radius: 2px; transform-origin: left; }
+.pipe-reduce .rd-manual { background: color-mix(in srgb, var(--ink) 26%, transparent); }
+.pipe-reduce .rd-ai { background: var(--accent); }
+.pipe-reduce .rd-cut {
+  position: absolute; right: 7px; top: 50%; transform: translateY(-50%);
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: .04em;
+  color: var(--accent-2); white-space: nowrap;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .pipe-node .pulse { animation: pulse 2.4s ease-out infinite; }
   .pipe-arrow .ln { animation: dash 1s linear infinite; }
   .pipe-node .core { animation: core 2.4s ease-in-out infinite; }
+  .pipe-reduce .rd-manual { animation: grow 1s .25s cubic-bezier(.22,.61,.36,1) both; }
+  .pipe-reduce .rd-ai { animation: grow 1s .5s cubic-bezier(.22,.61,.36,1) both; }
+  .pipe-reduce .rd-cut { animation: fade-in .5s 1.15s both; }
 }
 @keyframes pulse { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(2.1); opacity: 0; } }
 @keyframes dash { to { stroke-dashoffset: -16; } }
 @keyframes core { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 
 /* =========================================================================
    SECTION SCAFFOLD
@@ -420,7 +446,9 @@ html[data-grid="off"] .hero::before,
 html[data-grid="off"] .cta-band::before { display: none; }
 html[data-motion="off"] .pipe-node .pulse,
 html[data-motion="off"] .pipe-arrow .ln,
-html[data-motion="off"] .pipe-node .core { animation: none; }
+html[data-motion="off"] .pipe-node .core,
+html[data-motion="off"] .pipe-reduce .rd-fill,
+html[data-motion="off"] .pipe-reduce .rd-cut { animation: none; }
 html[data-motion="off"] .reveal { transition-duration: .25s; }
 
 /* =========================================================================

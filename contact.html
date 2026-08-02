@@ -215,11 +215,26 @@
           <textarea id="cf-body" name="message" rows="4" required placeholder="例）月100件の請求書処理に毎月40時間かかっています。Excelの台帳はあります。"></textarea>
         </div>
         <p class="cf-error" role="alert" hidden></p>
-        <button class="btn btn-primary" type="submit">入力内容でメールを作成<span class="arr">→</span></button>
-        <p class="cf-note">ボタンを押すとお使いのメールソフトが起動し、入力内容が本文に入ります。起動しない場合は、下のアドレス宛に直接お送りください。</p>
+
+        <!--
+          送信ボタンは button ではなく実体のある a にしている。
+          JSで生成したaを合成クリックして即 removeChild する方式だと、
+          Chrome の外部プロトコル起動が非同期のため起点要素が消えて破棄されることがある。
+          DOM に常駐する a の href を入力のたびに更新し、クリックはブラウザ既定の挙動に任せる。
+          JS が無効でも宛先だけは入った mailto として機能する。
+        -->
+        <a class="btn btn-primary cf-send" id="cf-send" href="mailto:takeshi.ishida@takeside.co.jp">メールアプリで開く<span class="arr">→</span></a>
+
+        <!-- メールアプリ未設定でブラウザの Gmail を使っている利用者向けの代替経路 -->
+        <a class="cf-alt" id="cf-gmail" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=takeshi.ishida@takeside.co.jp" target="_blank" rel="noopener">ブラウザの Gmail で開く</a>
+
+        <p class="cf-note">どちらも開かない場合は、下の「本文をコピー」でお使いのメールに貼り付けてお送りください。</p>
         <div class="cf-fallback">
           <code>takeshi.ishida@takeside.co.jp</code>
-          <button class="cf-copy" type="button" data-mail="takeshi.ishida@takeside.co.jp">コピー</button>
+          <span class="cf-acts">
+            <button class="cf-copy" type="button" data-copy="mail">アドレスをコピー</button>
+            <button class="cf-copy" type="button" data-copy="body">本文をコピー</button>
+          </span>
         </div>
       </form>
     </div>
@@ -319,86 +334,103 @@
     }
 
     // ---- お問い合わせフォーム ----
-    // 静的ホスティングのため、入力内容から本文を組み立てて mailto を開く。
-    // 外部フォームサービスに切り替える際は、この preventDefault ごと削除すれば通常送信になる。
+    // 静的ホスティングのため送信サーバを持てない。入力内容から本文を組み立て、
+    // (1) メールアプリ (2) ブラウザのGmail (3) クリップボード の3経路を用意する。
+    // 外部フォームサービスに切り替える場合は form に action/method を足し、この節を削除する。
     var form = document.getElementById('contact-form');
     if (form) {
-      var err = form.querySelector('.cf-error');
       var MAIL = 'takeshi.ishida@takeside.co.jp';
+      var err  = form.querySelector('.cf-error');
+      var send = document.getElementById('cf-send');
+      var gmail = document.getElementById('cf-gmail');
 
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var v = function (id) { return (document.getElementById(id).value || '').trim(); };
-        var name = v('cf-name'), email = v('cf-email'), body = v('cf-body');
-        var company = v('cf-company'), topic = v('cf-topic');
+      function val(id) { return (document.getElementById(id).value || '').trim(); }
 
+      function compose() {
+        var name = val('cf-name'), email = val('cf-email'), body = val('cf-body');
+        var company = val('cf-company'), topic = val('cf-topic');
         var missing = [];
-        if (!name) missing.push('お名前');
+        if (!name)  missing.push('お名前');
         if (!email) missing.push('メールアドレス');
-        if (!body) missing.push('ご相談内容');
-        if (missing.length) { show(missing.join('・') + ' を入力してください。'); return; }
+        if (!body)  missing.push('ご相談内容');
+        var problem = null;
+        if (missing.length) problem = missing.join('・') + ' を入力してください。';
         // 厳密判定はしない。打ち間違いの取りこぼしより、送れないほうが損失が大きい。
-        if (email.indexOf('@') < 1 || email.indexOf('.', email.indexOf('@')) < 0) {
-          show('メールアドレスの形式をご確認ください。'); return;
-        }
-        hide();
+        else if (email.indexOf('@') < 1 || email.indexOf('.', email.indexOf('@')) < 0)
+          problem = 'メールアドレスの形式をご確認ください。';
 
-        var lines = [
-          'お名前: ' + name,
-          '会社名・屋号: ' + (company || '（未記入）'),
-          'メールアドレス: ' + email,
-          'ご相談の種類: ' + topic,
-          '',
-          'ご相談内容:',
-          body,
-          '',
-          '---',
-          'takeside.co.jp のお問い合わせフォームより'
-        ].join('\n');
+        return {
+          problem: problem,
+          subject: '【お問い合わせ】' + topic + (name ? ' / ' + name : ''),
+          text: [
+            'お名前: ' + (name || ''),
+            '会社名・屋号: ' + (company || '（未記入）'),
+            'メールアドレス: ' + (email || ''),
+            'ご相談の種類: ' + topic,
+            '',
+            'ご相談内容:',
+            body || '',
+            '',
+            '---',
+            'takeside.co.jp のお問い合わせフォームより'
+          ].join('\n')
+        };
+      }
 
-        var href = 'mailto:' + MAIL
-          + '?subject=' + encodeURIComponent('【お問い合わせ】' + topic + ' / ' + name)
-          + '&body=' + encodeURIComponent(lines);
+      // 入力のたびにリンク先を更新しておく。クリック時に組み立てて遷移させるのではなく、
+      // 「最初から正しい href を持つリンク」をユーザーが踏む形にするのが最も確実。
+      function refresh() {
+        var c = compose();
+        var q = '?subject=' + encodeURIComponent(c.subject) + '&body=' + encodeURIComponent(c.text);
+        var mailto = 'mailto:' + MAIL + q;
+        // mailto が長すぎると環境によって切り捨てられるため、その場合は宛先だけにする
+        send.href = mailto.length > 1900 ? 'mailto:' + MAIL : mailto;
+        gmail.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(MAIL)
+                   + '&su=' + encodeURIComponent(c.subject) + '&body=' + encodeURIComponent(c.text);
+      }
+      form.addEventListener('input', refresh);
+      form.addEventListener('change', refresh);
+      refresh();
 
-        // mailto が長すぎるとブラウザ／メーラで切り捨てられることがあるため上限を見る
-        if (href.length > 1900) {
-          show('ご相談内容が長すぎるため、お手数ですが ' + MAIL + ' へ直接お送りください。');
-          return;
-        }
-        // location 代入ではなく a要素のクリックで開く。
-        // iOS Safari など一部環境で location 代入だと mailto が無視されることがあるため。
-        var a = document.createElement('a');
-        a.href = href; a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      });
+      // 未入力のまま踏まれた場合だけ既定動作を止める
+      function guard(e) {
+        var c = compose();
+        if (c.problem) { e.preventDefault(); show(c.problem); return false; }
+        hide(); return true;
+      }
+      send.addEventListener('click', guard);
+      gmail.addEventListener('click', guard);
 
-      function show(msg) { err.textContent = msg; err.hidden = false; }
+      function show(m) { err.textContent = m; err.hidden = false; }
       function hide() { err.textContent = ''; err.hidden = true; }
 
-      var copy = form.querySelector('.cf-copy');
-      if (copy) {
-        copy.addEventListener('click', function () {
-          var addr = copy.getAttribute('data-mail');
+      // クリップボード（メール経路が全滅した場合の最終手段）
+      form.querySelectorAll('.cf-copy').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var kind = btn.getAttribute('data-copy');
+          var c = compose();
+          if (kind === 'body' && c.problem) { show(c.problem); return; }
+          hide();
+          var text = kind === 'mail' ? MAIL : (c.subject + '\n\n' + c.text);
+          var label = btn.textContent;
           var done = function () {
-            var t = copy.textContent; copy.textContent = 'コピーしました';
-            setTimeout(function () { copy.textContent = t; }, 1600);
+            btn.textContent = 'コピーしました';
+            setTimeout(function () { btn.textContent = label; }, 1800);
           };
           if (navigator.clipboard && window.isSecureContext) {
-            navigator.clipboard.writeText(addr).then(done, fallback);
-          } else { fallback(); }
-          function fallback() {
-            // http や古い環境で clipboard API が使えない場合の退避
+            navigator.clipboard.writeText(text).then(done, legacy);
+          } else { legacy(); }
+          function legacy() {
+            // http や古い環境で Clipboard API が使えない場合の退避
             var ta = document.createElement('textarea');
-            ta.value = addr; ta.setAttribute('readonly', '');
+            ta.value = text; ta.setAttribute('readonly', '');
             ta.style.cssText = 'position:absolute;left:-9999px';
             document.body.appendChild(ta); ta.select();
             try { document.execCommand('copy'); done(); } catch (_) {}
             document.body.removeChild(ta);
           }
         });
-      }
+      });
     }
   })();
 </script>

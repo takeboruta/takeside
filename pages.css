@@ -154,7 +154,16 @@
           mask-image: radial-gradient(80% 120% at 92% 50%, #000, transparent 70%);
 }
 .contact-card > * { position: relative; }
-.contact-card h2 { font-size: var(--t-h2); font-weight: 600; }
+/* 見出しのサイズ基準を左カラム自身にする。
+   --t-h2(最大50px) だとカラム幅500pxに対して大きく、
+   「まずは、動くものを／見て／判断してください。」と3行に割れて中間行が2文字になる。
+   最長行「まずは、動くものを見て」の実測が 10.93em ＝ 器の 9.15% が上限。余裕を見て 8.7cqw。 */
+.contact-card > div:first-child { container-type: inline-size; }
+.contact-card h2 {
+  font-size: var(--t-h2);
+  font-size: clamp(24px, 8.7cqw, 44px);
+  font-weight: 600;
+}
 .contact-card .lead { color: color-mix(in srgb, var(--on-accent) 86%, transparent); margin-top: 16px; }
 .contact-card .eyebrow { color: color-mix(in srgb, var(--on-accent) 82%, transparent); }
 .contact-card .eyebrow::before { background: var(--on-accent); }
@@ -188,11 +197,19 @@
 .cform :focus-visible { outline: 2px solid var(--on-accent); outline-offset: 2px; }
 /* :user-invalid は「一度触れて外した」場合のみ効くので、入力途中に赤くならない */
 .cform input:user-invalid, .cform textarea:user-invalid { border-color: #7A1F0A; }
-.cform button[type="submit"] {
+/* 送信は a 要素（外部プロトコル起動をブラウザ既定に任せるため） */
+.cf-send {
   margin-top: 4px; background: var(--on-accent); color: var(--accent-2);
   justify-content: center; padding: 15px 24px; font-size: 16px;
 }
-.cform button[type="submit"]:hover { background: #fff; }
+.cf-send:hover { background: #fff; }
+.cf-alt {
+  align-self: center; font-size: 13px; text-decoration: underline;
+  text-underline-offset: 3px;
+  color: color-mix(in srgb, var(--on-accent) 86%, transparent);
+  transition: color .16s ease;
+}
+.cf-alt:hover { color: var(--on-accent); }
 .cf-error {
   margin: 0; padding: 10px 13px; font-size: 13.5px; line-height: 1.6;
   background: color-mix(in srgb, #000 22%, transparent);
@@ -213,12 +230,18 @@
   font-family: var(--font-mono); font-size: 12.5px; color: var(--on-accent);
   min-width: 0; overflow-wrap: anywhere;
 }
+.cf-acts { display: flex; flex-wrap: wrap; gap: 8px; }
 .cf-copy {
   font-family: var(--font-mono); font-size: 11.5px; cursor: pointer; white-space: nowrap;
   background: transparent; color: var(--on-accent);
   border: 1px solid color-mix(in srgb, var(--on-accent) 48%, transparent);
   border-radius: var(--radius); padding: 6px 12px;
   transition: background .18s ease, border-color .18s ease;
+}
+/* 「本文をコピー」はメール経路が全滅した場合の本命なので少し強調する */
+.cf-copy[data-copy="body"] {
+  background: color-mix(in srgb, var(--on-accent) 16%, transparent);
+  border-color: color-mix(in srgb, var(--on-accent) 70%, transparent);
 }
 .cf-copy:hover { background: color-mix(in srgb, var(--on-accent) 15%, transparent); border-color: var(--on-accent); }
 
@@ -322,4 +345,11 @@
   .reduce-grid { grid-template-columns: 1fr; }
   .notes-2 { grid-template-columns: 1fr; }
   .company .row { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* 狭幅でのカード見出し。--t-h3 は下限20pxで、320〜375px では
+   「プロジェクトマネジメント支援」のような長い1文節が枠内に収まらず、
+   末尾1文字だけが次行に落ちる。この幅帯だけ一段下げる。 */
+@media (max-width: 480px) {
+  .wd-title, .cell h3, .cell h4 { font-size: 18px; }
 }

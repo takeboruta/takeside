@@ -50,6 +50,9 @@
 
 html { scroll-behavior: smooth; }
 
+/* アンカー着地時、position:sticky のヘッダー(72px)が対象を隠さないように逃がす */
+:target { scroll-margin-top: 96px; }
+
 body {
   margin: 0;
   background: var(--paper);
@@ -97,6 +100,33 @@ img, svg { display: block; max-width: 100%; }
 h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.18; letter-spacing: -0.005em; }
 .h2 { font-size: var(--t-h2); font-weight: 600; line-height: 1.2; }
 .lead { font-size: var(--t-lead); color: var(--ink-2); line-height: 1.8; max-width: 62ch; }
+
+/* 日本語の改行位置制御。
+   auto-phrase = 文節単位で折り返す（「まるごとAI/に。」のような分断を防ぐ）
+   pretty      = 最終行に1〜2文字だけ残る孤立行を避ける
+   どちらも未対応ブラウザでは既定の折り返しにフォールバックする。
+
+   見出しに限定している。長いリード文に auto-phrase をかけると
+   毎行が文節末で切れて右端が大きくガタつくため、本文は既定の禁則処理に任せる。 */
+h1, h2, h3, h4, .h2 {
+  text-wrap: pretty;
+  /* 行頭の「『（ が持つ字面の余白を詰める。
+     これがないと「「最短1週間」の、中身。」のような見出しだけ左に食い込んで見える。 */
+  text-spacing-trim: trim-start;
+}
+/* auto-phrase は文節内で改行しないぶん、要素の min-content 幅を「最長の文節」まで押し上げる。
+   320px級の画面では見出しの1文節（例:「まず試してみませんか。」= 28px×11字 ≒ 308px）が
+   本文カラム(265px)より広くなり、flexの子がその幅で固定されて溢れる。
+   works.html のCTA帯で実際に文字が切れていた（overflow:hidden のため横スクロールは出ない）。
+   文節折り返しが効くのは行が複数になる中〜広幅なので、480px以上に限定する。 */
+@media (min-width: 480px) {
+  h1, h2, h3, h4, .h2 { word-break: auto-phrase; }
+}
+/* 480px未満でも h3/h4 は解禁する。溢れたのは h2(28px級)で、
+   h3/h4(20px級)の1文節はカード内幅に収まるため安全（全ページ×全幅で実測確認済み）。 */
+@media (max-width: 479px) {
+  h3, h4 { word-break: auto-phrase; }
+}
 
 .accent { color: var(--accent-2); }
 .mono { font-family: var(--font-mono); }
@@ -164,8 +194,17 @@ h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.18; letter-spacing: -0.
   gap: clamp(36px, 5vw, 72px);
   align-items: center;
 }
+/* 見出しのサイズ基準をビューポートではなく本文カラム自身にする。
+   --t-display は 6.2vw 基準だが、ヒーロー本文は2カラムの左側（実測で幅の約39%）しかなく、
+   1440px では 88px まで育って「AIに任せませ／んか。」と割れていた。
+   cqw なら器の幅に追随するので、どの幅でも2行に収まる。
+   （コンテナクエリ非対応環境では下の宣言が無効になり var(--t-display) にフォールバックする） */
+.hero-copy { container-type: inline-size; }
 .hero h1 {
   font-size: var(--t-display);
+  /* 最長行「AIに任せませんか。」の実測が 8.97em ＝ 器の 11.15% が2行に収まる上限。
+     フォント読込差のぶんを見て 10.7cqw に置く（h1のコピーを変えたら要再計測）。 */
+  font-size: clamp(28px, 10.7cqw, 68px);
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.08;
@@ -176,8 +215,10 @@ h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.18; letter-spacing: -0.
 .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
 
 .trust {
-  display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 38px;
-  padding-top: 26px; border-top: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; gap: 10px 26px; margin: 38px 0 0;
+  /* ul の既定 padding-inline-start(40px) を打ち消す。
+     これが残っていたため各項目が本文の左端から浮いてインデントしていた。 */
+  padding: 26px 0 0; border-top: 1px solid var(--line);
 }
 .trust li {
   list-style: none; display: flex; align-items: center; gap: 9px;
@@ -219,6 +260,16 @@ h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.18; letter-spacing: -0.
   color: var(--ink-3); text-transform: uppercase;
   padding-bottom: 16px; margin-bottom: 20px; border-bottom: 1px dashed var(--line);
 }
+/* コード風トークン（workflow.automate / agent.run() / deploy:）は
+   情報テキストと地続きに見えると「装飾なのか実データなのか」が判別できない。
+   薄い面と枠を与えて、読み物ではなく識別子だと分かるようにする。 */
+.pipe-head > span:first-child,
+.pipe-foot .code {
+  background: color-mix(in srgb, var(--ink) 5%, transparent);
+  border: 1px solid var(--line-2);
+  border-radius: 3px; padding: 3px 7px;
+  text-transform: none; letter-spacing: .06em;
+}
 .pipe-dots { display: flex; gap: 6px; }
 .pipe-dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); display: block; }
 .pipe-dots i:first-child { background: var(--accent); }
@@ -259,7 +310,14 @@ h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.18; letter-spacing: -0.
 .pipe-node .ring .core { width: 12px; height: 12px; border-radius: 50%; background: var(--on-accent); }
 .pipe-node .pulse { position: absolute; inset: 0; border-radius: 50%; border: 2px solid color-mix(in srgb, var(--on-accent) 65%, transparent); }
 .pipe-node .nm { font-size: 13px; font-weight: 600; }
-.pipe-node .ev { font-family: var(--font-mono); font-size: 10px; color: color-mix(in srgb, var(--on-accent) 78%, transparent); letter-spacing: .04em; }
+/* 名称「AIエージェント」とコード「agent.run()」が地続きに読まれないよう面で分ける
+   （モバイルでは横並びになるため特に必要） */
+.pipe-node .ev {
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .04em;
+  color: color-mix(in srgb, var(--on-accent) 88%, transparent);
+  background: color-mix(in srgb, var(--on-accent) 16%, transparent);
+  border-radius: 3px; padding: 2px 6px;
+}
 
 .pipe-arrow { display: grid; place-items: center; }
 .pipe-arrow svg { width: 30px; height: 16px; }
@@ -269,9 +327,11 @@ h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.18; letter-spacing: -0.
 .pipe-foot {
   margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--line);
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  font-family: var(--font-mono); font-size: 11px; color: var(--ink-3);
+  /* 11px は注釈として小さすぎたため 12.5px に。数値は本文書体で読みやすく出す */
+  font-family: var(--font-mono); font-size: 12.5px; color: var(--ink-3);
 }
-.pipe-foot .stat b { color: var(--accent-2); font-size: 15px; }
+.pipe-foot .stat { font-family: var(--font-jp); letter-spacing: 0; }
+.pipe-foot .stat b { color: var(--accent-2); font-size: 16px; font-family: var(--font-en); }
 
 /* reduce bar-chart in the lower-left cell */
 .pipe-reduce { display: flex; flex-direction: column; gap: 11px; }
@@ -312,7 +372,9 @@ h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.18; letter-spacing: -0.
    SECTION SCAFFOLD
    ========================================================================= */
 .section { padding-block: var(--sect-y); }
-.section-head { max-width: 760px; margin-bottom: clamp(40px, 5vw, 64px); }
+/* 見出しは1行に収まる幅まで許し、リード文だけ 62ch（.lead）で読みやすさを保つ。
+   従来は両方まとめて 760px に絞っていたため、PCで見出しが早期に折り返していた。 */
+.section-head { max-width: 1000px; margin-bottom: clamp(40px, 5vw, 64px); }
 .section-head .h2 { margin-top: 18px; }
 .section-head .lead { margin-top: 18px; }
 
@@ -343,8 +405,15 @@ h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.18; letter-spacing: -0.
 .case .stat .num {
   font-family: var(--font-en); font-weight: 600; letter-spacing: -0.03em;
   font-size: clamp(46px, 5vw, 68px); line-height: 1; color: var(--ink);
+  font-variant-numeric: tabular-nums; /* 3枚のカードで数字の字幅を揃える */
 }
 .case .stat .num em { color: var(--accent); font-style: normal; }
+/* 「約85%」の「約」は数字と同サイズだと重い。落として数字を主役にする */
+.case .stat .num .approx {
+  font-family: var(--font-jp); font-size: .42em; font-weight: 500;
+  letter-spacing: 0; color: var(--ink-3);
+  margin-right: .08em; vertical-align: .3em;
+}
 .case .stat .cap { font-size: 13px; color: var(--ink-3); margin-top: 6px; }
 .case .more { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); display: inline-flex; gap: 6px; align-items: center; transition: color .18s, gap .18s; }
 .case:hover .more { color: var(--accent-2); gap: 10px; }
@@ -379,8 +448,174 @@ h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.18; letter-spacing: -0.
 .pain-foot b { color: var(--accent-2); font-weight: 600; }
 
 /* =========================================================================
+   WORKS TEASER  (sunken band / 実績3件の抜粋)
+   ========================================================================= */
+.section.works-teaser { background: var(--paper-2); }
+.wk-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 1.6vw, 22px); }
+.wk {
+  background: var(--paper-3); border: 1px solid var(--line); border-radius: 8px;
+  padding: clamp(24px, 2.4vw, 34px);
+  display: flex; flex-direction: column; gap: 14px;
+  transition: border-color .22s ease, transform .22s ease, box-shadow .22s ease;
+}
+.wk:hover {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+  transform: translateY(-3px); box-shadow: 0 22px 44px -32px rgba(22,21,15,.5);
+}
+.wk-cat {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink-3); display: inline-flex; align-items: center; gap: 8px;
+}
+.wk-cat::before { content: ""; width: 7px; height: 7px; background: var(--accent); flex: none; }
+.wk h3 { font-size: clamp(18px, 1.5vw, 22px); }
+.wk > p { margin: 0; color: var(--ink-2); font-size: 14.5px; line-height: 1.7; }
+/* 効果の数値だけでは Before が伝わらないため、導入前の状態を1行添える */
+.wk-before {
+  margin: 0; font-size: 13.5px; line-height: 1.7; color: var(--ink-3);
+  padding-left: 13px; border-left: 2px solid var(--line);
+}
+.wk-before .k {
+  display: block; font-family: var(--font-mono); font-size: 10.5px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 3px;
+}
+/* 指標ブロックとリンクをカード下端に揃える。説明文の長さが違っても足並みが崩れないように */
+.wk-metrics { margin: auto 0 0; padding-top: 16px; border-top: 1px solid var(--line); display: grid; gap: 11px; }
+.wk-metrics > div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.wk-metrics dt { font-size: 12.5px; color: var(--ink-3); }
+.wk-metrics dd {
+  margin: 0; font-family: var(--font-en); font-weight: 600; font-size: 21px;
+  letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; text-align: right;
+}
+.wk-metrics dd em {
+  font-style: normal; font-family: var(--font-jp); font-size: .62em; font-weight: 500;
+  color: var(--ink-2); margin-left: 2px;
+}
+.wk-more {
+  font-family: var(--font-mono); font-size: 12px; color: var(--ink-3);
+  display: inline-flex; gap: 6px; align-items: center; transition: color .18s, gap .18s;
+}
+.wk:hover .wk-more { color: var(--accent-2); gap: 10px; }
+.wk-all {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 26px;
+  font-family: var(--font-mono); font-size: 12.5px; color: var(--accent-2);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  padding-bottom: 3px; transition: gap .18s ease;
+}
+.wk-all:hover { gap: 12px; }
+.wk-note { font-size: 12.5px; color: var(--ink-3); margin: 18px 0 0; }
+
+/* =========================================================================
+   PROCESS  (横4ステップのタイムライン)
+   ========================================================================= */
+.proc {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  column-gap: clamp(20px, 2.4vw, 36px); row-gap: clamp(32px, 4vw, 48px);
+}
+/* 各ステップが自分の基準線を持つ形にしている。
+   コンテナ側に1本の罫線を引いて縦罫で区切る作りだと、
+   2カラム・1カラムへ折り返したときに罫線の在り方が破綻するため。 */
+.proc .step {
+  position: relative;
+  padding-top: 30px;
+  border-top: 1px solid var(--ink);
+}
+/* 基準線上の目盛り */
+.proc .step::before {
+  content: ""; position: absolute; left: 0; top: -1px;
+  width: 28px; height: 3px; background: var(--accent);
+}
+.proc .day {
+  font-family: var(--font-mono); font-size: var(--t-mono); letter-spacing: .18em;
+  text-transform: uppercase; color: var(--accent-2); display: block;
+}
+/* 4カラム時の1枠は約240px。--t-h3(27px)だと工程名が折り返すうえ、
+   カード見出しと同格に見えてしまうので一段落とす */
+.proc h3 { font-size: clamp(18px, 1.45vw, 21px); margin-top: 14px; }
+.proc p { color: var(--ink-2); font-size: 14.5px; line-height: 1.75; margin: 12px 0 0; }
+.proc .free {
+  display: inline-flex; align-items: center; margin-top: 14px;
+  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .08em;
+  color: var(--accent-2);
+  background: color-mix(in srgb, var(--accent) 10%, var(--paper-3));
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--line));
+  border-radius: var(--radius); padding: 6px 10px;
+}
+.proc-note { font-size: 12.5px; color: var(--ink-3); margin-top: 26px; }
+
+/* =========================================================================
+   ABOUT  (sunken band / 代表紹介)
+   ========================================================================= */
+.section.about { background: var(--paper-2); }
+.ab {
+  display: grid; grid-template-columns: minmax(200px, 0.8fr) minmax(0, 1.7fr);
+  gap: clamp(24px, 3vw, 52px);
+  background: var(--paper-3); border: 1px solid var(--line); border-radius: 8px;
+  padding: clamp(26px, 3vw, 44px);
+}
+.ab-role {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--accent-2);
+}
+.ab-role::before { content: ""; width: 7px; height: 7px; background: var(--accent); flex: none; }
+.ab-name { font-size: clamp(24px, 2.4vw, 32px); margin-top: 12px; }
+.ab-name-en {
+  display: block; margin-top: 7px; font-family: var(--font-mono);
+  font-size: 12px; letter-spacing: .14em; color: var(--ink-3);
+}
+.ab-body p { margin: 0; font-size: var(--t-lead); line-height: 1.85; color: var(--ink-2); }
+/* .ab-body p より詳細度を上げないと注記までリード級(21px)で出てしまう */
+.ab-body .ab-note {
+  margin: 18px 0 0; padding-top: 16px; border-top: 1px dashed var(--line);
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: var(--ink-3);
+}
+
+/* =========================================================================
+   PRICING TEASER  (固定費プランの要約)
+   ========================================================================= */
+.pr-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 1.6vw, 22px); }
+.pr {
+  position: relative; background: var(--paper-3); border: 1px solid var(--line);
+  border-radius: 8px; padding: clamp(24px, 2.4vw, 34px);
+}
+.pr.feat {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+  box-shadow: 0 22px 44px -34px rgba(22,21,15,.45);
+}
+.pr-flag {
+  position: absolute; top: -1px; right: clamp(20px, 2vw, 28px);
+  background: var(--accent); color: var(--on-accent);
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em;
+  padding: 5px 10px; border-radius: 0 0 var(--radius) var(--radius);
+}
+.pr-name {
+  display: block; font-family: var(--font-mono); font-size: 11.5px;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3);
+}
+.pr-price { margin-top: 12px; display: flex; align-items: baseline; gap: 4px; }
+.pr-price .v {
+  font-family: var(--font-en); font-weight: 600; line-height: 1;
+  font-size: clamp(40px, 4vw, 54px); letter-spacing: -0.03em; font-variant-numeric: tabular-nums;
+}
+.pr-price .u { font-size: 15px; font-weight: 500; color: var(--ink-2); }
+.pr > p { margin: 14px 0 0; color: var(--ink-2); font-size: 14.5px; line-height: 1.7; }
+.pr-foot {
+  margin-top: clamp(20px, 2.4vw, 28px);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px;
+  background: color-mix(in srgb, var(--accent) 8%, var(--paper-3));
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+  border-radius: 8px; padding: 22px clamp(22px, 2.4vw, 30px);
+}
+.pr-foot p { margin: 0; font-size: 15px; line-height: 1.65; color: var(--ink-2); }
+.pr-foot b { color: var(--accent-2); font-weight: 600; }
+.pr-note { font-size: 12.5px; color: var(--ink-3); margin: 16px 0 0; }
+
+/* =========================================================================
    EXPLORE
    ========================================================================= */
+/* About を挟んだぶん、以降の明暗が同色で隣り合わないよう Explore を沈み側に回している */
+.section.explore-band { background: var(--paper-2); }
 .explore-list { border-top: 1px solid var(--line); }
 .exp {
   display: grid; grid-template-columns: 56px minmax(180px, 280px) 1fr auto; gap: 24px; align-items: center;
@@ -435,6 +670,30 @@ h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.18; letter-spacing: -0.
 .foot-bottom small { color: var(--ink-3); font-size: 12.5px; font-family: var(--font-mono); letter-spacing: .04em; }
 
 /* =========================================================================
+   MOBILE STICKY CTA
+   モバイルではヘッダーCTAがハンバーガーの中に隠れ、コンバージョン導線が1タップ遠くなる。
+   ヘッダーに常設しようとするとロゴ(高さ30px＝実幅219px)＋CTA＋トグルで
+   320px級の幅に収まらないため、画面下部の固定バーに逃がしている。
+   ========================================================================= */
+.mobile-cta { display: none; }
+@media (max-width: 760px) {
+  .mobile-cta {
+    display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: saturate(140%) blur(10px);
+    border-top: 1px solid var(--line);
+    padding: 10px var(--gut);
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  }
+  .mobile-cta .btn { width: 100%; justify-content: center; padding-block: 13px; }
+  /* 固定バーがフッター末尾を覆わないよう高さぶん逃がす。
+     body ではなく footer の padding に持たせているのは、
+     body に付けると footer 背景が途切れて地色の帯が挟まるため。
+     バーを置かないページ（contact.html）では余白も不要なので :has() で限定する。 */
+  body:has(.mobile-cta) .site-footer { padding-bottom: 100px; }
+}
+
+/* =========================================================================
    REVEAL
    ========================================================================= */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
@@ -459,6 +718,8 @@ html[data-motion="off"] .reveal { transition-duration: .25s; }
   .pipe { margin-top: 8px; }
   .cases { grid-template-columns: 1fr; }
   .pains { grid-template-columns: 1fr; }
+  .proc { grid-template-columns: 1fr 1fr; }
+  .wk-list { grid-template-columns: 1fr; }
   .foot-grid { grid-template-columns: 1fr 1fr; }
   .foot-brand { grid-column: 1 / -1; }
 }
@@ -467,6 +728,9 @@ html[data-motion="off"] .reveal { transition-duration: .25s; }
   .nav .btn.nav-toggle { display: inline-grid; place-items: center; font-size: 18px; line-height: 1; }
   .exp { grid-template-columns: 40px 1fr auto; }
   .exp .d { display: none; }
+  .proc { grid-template-columns: 1fr; }
+  .pr-list { grid-template-columns: 1fr; }
+  .ab { grid-template-columns: 1fr; }
   .cta-inner { flex-direction: column; align-items: flex-start; }
   .foot-grid { grid-template-columns: 1fr; }
 
@@ -488,6 +752,27 @@ html[data-motion="off"] .reveal { transition-duration: .25s; }
     margin-top: 12px; border-bottom: none; background: var(--accent); color: var(--on-accent);
     border-radius: var(--radius); text-align: center; font-family: var(--font-en); font-weight: 500;
   }
+}
+
+@media (max-width: 640px) {
+  /* ---- パイプライン図：3カラムのままでは375pxでチップが全部折り返すため縦積みにする ---- */
+  .pipe-flow { grid-template-columns: 1fr; gap: 12px; }
+  .pipe-arrow svg { transform: rotate(90deg); }
+  .pipe-node { max-width: none; width: 100%; flex-direction: row; justify-content: center; gap: 14px; padding: 14px 16px; }
+  .pipe-node .ring { width: 30px; height: 30px; }
+  .pipe-node .nm { font-size: 14px; }
+  /* 2段目は 矢印 → 出力チップ → 比較チャート の順にして
+     「手作業 → AI → 出力 → 削減効果」という読み順を縦でも保つ */
+  .pipe-flow + .pipe-flow .pipe-arrow { order: 1; }
+  .pipe-flow + .pipe-flow .pipe-col { order: 2; }
+  .pipe-flow + .pipe-flow .pipe-reduce { order: 3; margin-top: 4px; }
+  .pipe-foot { flex-direction: column; align-items: flex-start; gap: 6px; }
+}
+
+@media (max-width: 560px) {
+  /* ボタンは文字数なりの幅だとガタつくので、SPでは縦に等幅で積む */
+  .hero-cta { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; }
+  .hero-cta .btn { justify-content: center; padding-block: 14px; }
 }
 /* お問い合わせ（モバイル専用メニュー項目）はデスクトップでは隠す */
 .nav-links .m-cta { display: none; }

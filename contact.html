@@ -101,6 +101,7 @@
       <ul class="nav-links">
         <li><a href="service.html">サービス</a></li>
         <li><a href="works.html">実績・事例</a></li>
+        <li><a href="index.html#process">進め方</a></li>
         <li><a href="pricing.html">料金</a></li>
         <li><a href="contact.html#faq" aria-current="page">FAQ</a></li>
         <li class="m-cta"><a href="contact.html#contact">お問い合わせ</a></li>
@@ -175,14 +176,52 @@
     <div class="contact-card">
       <div>
         <span class="eyebrow"><span class="idx">02</span>&nbsp;&nbsp;Contact</span>
-        <h2 style="margin-top:18px;">まずは、動くものを<br />見て判断してください。</h2>
+        <h2 style="margin-top:18px;">まずは、動くものを見て判断してください。</h2>
         <p class="lead">最初から完璧な要件はそろっていなくて当然です。現場資料や既存フォーマット、日々の運用情報を送るだけでも構いません。できること・概算・進め方を、率直にお返しします。</p>
       </div>
-      <div class="contact-actions">
-        <a class="btn btn-primary" href="mailto:takeshi.ishida@takeside.co.jp">メールで相談する<span class="arr">→</span></a>
-        <a class="btn btn-primary" href="mailto:takeshi.ishida@takeside.co.jp?subject=デモ相談">デモを相談する<span class="arr">→</span></a>
-        <p class="note">takeshi.ishida@takeside.co.jp</p>
-      </div>
+      <!--
+        GitHub Pages は静的ホスティングのため、サーバ側で受信する仕組みを持てない。
+        そのため送信は「入力内容からメール本文を組み立てて mailto を開く」方式にしている。
+        メールソフトが開かない環境でも詰まないよう、宛先アドレスとコピーボタンを常設。
+
+        外部フォームサービス（Formspree 等）を契約したら、この form タグに
+          action="https://formspree.io/f/xxxxxxx" method="POST"
+        を足し、下の JS の e.preventDefault() を外すだけで通常送信に切り替わる。
+      -->
+      <form class="cform" id="contact-form" novalidate>
+        <div class="cf-row">
+          <label for="cf-name">お名前<span class="req">必須</span></label>
+          <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="山田 太郎" />
+        </div>
+        <div class="cf-row">
+          <label for="cf-company">会社名・屋号</label>
+          <input id="cf-company" name="company" type="text" autocomplete="organization" placeholder="任意" />
+        </div>
+        <div class="cf-row">
+          <label for="cf-email">メールアドレス<span class="req">必須</span></label>
+          <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" />
+        </div>
+        <div class="cf-row">
+          <label for="cf-topic">ご相談の種類</label>
+          <select id="cf-topic" name="topic">
+            <option>業務自動化の相談</option>
+            <option>プロトタイプを作りたい</option>
+            <option>料金・見積もりの相談</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="cf-row">
+          <label for="cf-body">ご相談内容<span class="req">必須</span></label>
+          <textarea id="cf-body" name="message" rows="4" required placeholder="例）月100件の請求書処理に毎月40時間かかっています。Excelの台帳はあります。"></textarea>
+        </div>
+        <p class="cf-error" role="alert" hidden></p>
+        <button class="btn btn-primary" type="submit">入力内容でメールを作成<span class="arr">→</span></button>
+        <p class="cf-note">ボタンを押すとお使いのメールソフトが起動し、入力内容が本文に入ります。起動しない場合は、下のアドレス宛に直接お送りください。</p>
+        <div class="cf-fallback">
+          <code>takeshi.ishida@takeside.co.jp</code>
+          <button class="cf-copy" type="button" data-mail="takeshi.ishida@takeside.co.jp">コピー</button>
+        </div>
+      </form>
     </div>
   </div>
 </section>
@@ -235,6 +274,7 @@
         <ul>
           <li><a href="service.html">サービス</a></li>
           <li><a href="works.html">実績・事例</a></li>
+          <li><a href="index.html#process">進め方</a></li>
           <li><a href="pricing.html">料金</a></li>
         </ul>
       </div>
@@ -253,6 +293,8 @@
     <p class="foot-bottom" style="border-top:none;padding-top:0;margin-top:8px;"><small style="font-family:var(--font-jp);letter-spacing:0;">当サイトはアクセス解析のため Google Analytics を利用しています（Cookie使用）。<a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">詳細</a></small></p>
   </div>
 </footer>
+
+
 
 <!-- ============================ SCRIPT ============================ -->
 <script>
@@ -274,6 +316,89 @@
         tgl.setAttribute('aria-expanded', open ? 'true' : 'false');
         tgl.textContent = open ? '✕' : '☰';
       });
+    }
+
+    // ---- お問い合わせフォーム ----
+    // 静的ホスティングのため、入力内容から本文を組み立てて mailto を開く。
+    // 外部フォームサービスに切り替える際は、この preventDefault ごと削除すれば通常送信になる。
+    var form = document.getElementById('contact-form');
+    if (form) {
+      var err = form.querySelector('.cf-error');
+      var MAIL = 'takeshi.ishida@takeside.co.jp';
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var v = function (id) { return (document.getElementById(id).value || '').trim(); };
+        var name = v('cf-name'), email = v('cf-email'), body = v('cf-body');
+        var company = v('cf-company'), topic = v('cf-topic');
+
+        var missing = [];
+        if (!name) missing.push('お名前');
+        if (!email) missing.push('メールアドレス');
+        if (!body) missing.push('ご相談内容');
+        if (missing.length) { show(missing.join('・') + ' を入力してください。'); return; }
+        // 厳密判定はしない。打ち間違いの取りこぼしより、送れないほうが損失が大きい。
+        if (email.indexOf('@') < 1 || email.indexOf('.', email.indexOf('@')) < 0) {
+          show('メールアドレスの形式をご確認ください。'); return;
+        }
+        hide();
+
+        var lines = [
+          'お名前: ' + name,
+          '会社名・屋号: ' + (company || '（未記入）'),
+          'メールアドレス: ' + email,
+          'ご相談の種類: ' + topic,
+          '',
+          'ご相談内容:',
+          body,
+          '',
+          '---',
+          'takeside.co.jp のお問い合わせフォームより'
+        ].join('\n');
+
+        var href = 'mailto:' + MAIL
+          + '?subject=' + encodeURIComponent('【お問い合わせ】' + topic + ' / ' + name)
+          + '&body=' + encodeURIComponent(lines);
+
+        // mailto が長すぎるとブラウザ／メーラで切り捨てられることがあるため上限を見る
+        if (href.length > 1900) {
+          show('ご相談内容が長すぎるため、お手数ですが ' + MAIL + ' へ直接お送りください。');
+          return;
+        }
+        // location 代入ではなく a要素のクリックで開く。
+        // iOS Safari など一部環境で location 代入だと mailto が無視されることがあるため。
+        var a = document.createElement('a');
+        a.href = href; a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      });
+
+      function show(msg) { err.textContent = msg; err.hidden = false; }
+      function hide() { err.textContent = ''; err.hidden = true; }
+
+      var copy = form.querySelector('.cf-copy');
+      if (copy) {
+        copy.addEventListener('click', function () {
+          var addr = copy.getAttribute('data-mail');
+          var done = function () {
+            var t = copy.textContent; copy.textContent = 'コピーしました';
+            setTimeout(function () { copy.textContent = t; }, 1600);
+          };
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(addr).then(done, fallback);
+          } else { fallback(); }
+          function fallback() {
+            // http や古い環境で clipboard API が使えない場合の退避
+            var ta = document.createElement('textarea');
+            ta.value = addr; ta.setAttribute('readonly', '');
+            ta.style.cssText = 'position:absolute;left:-9999px';
+            document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); done(); } catch (_) {}
+            document.body.removeChild(ta);
+          }
+        });
+      }
     }
   })();
 </script>

@@ -84,7 +84,7 @@
     { "@type": "Question", "name": "個人事業主・フリーランスでも依頼できますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。企業導入だけでなく、個人・フリーランス・小規模事業者向けのスモールスタートも用意しています。予算に応じた柔軟なプランで第一歩からサポートします。" } },
     { "@type": "Question", "name": "どのAIを使いますか？指定はできますか？", "acceptedAnswer": { "@type": "Answer", "text": "Claude／Gemini／Copilot／ChatGPT など、御社の導入状況に合わせて柔軟に対応します。特定ツールに固定せず、業務と既存環境に合うものを選定します。" } },
     { "@type": "Question", "name": "セキュリティや判定の正確性が心配です。", "acceptedAnswer": { "@type": "Answer", "text": "エンタープライズではセキュリティ要件に対応します。審査・判定業務では判定理由をログ保存し、人の確認・承認工程を残す半自動化の設計が可能で、安全に運用へ乗せます。" } },
-    { "@type": "Question", "name": "まず何から始めればいいですか？", "acceptedAnswer": { "@type": "Answer", "text": "デモ相談、現場資料の共有、プロトタイプ確認、投資判断の4ステップです。完璧な要件書は不要で手元の資料から着手できます。takeshi.ishida@takeside.co.jp までご連絡ください。" } }
+    { "@type": "Question", "name": "まず何から始めればいいですか？", "acceptedAnswer": { "@type": "Answer", "text": "無料相談（30分）、手元の資料の共有、プロトタイプの確認、導入するかの判断の4ステップです。完璧な要件書はいりません。無料相談の予約かお問い合わせフォームからご連絡ください。" } }
   ]
 }
 </script>
@@ -104,10 +104,10 @@
         <li><a href="index.html#process">進め方</a></li>
         <li><a href="pricing.html">料金</a></li>
         <li><a href="contact.html#faq" aria-current="page">FAQ</a></li>
-        <li class="m-cta"><a href="contact.html#contact">お問い合わせ</a></li>
+        <li class="m-cta"><a href="contact.html#contact">無料相談</a></li>
       </ul>
     </nav>
-    <a class="btn btn-primary" href="#contact">お問い合わせ<span class="arr">→</span></a>
+    <a class="btn btn-primary" href="#contact">無料相談<span class="arr">→</span></a>
     <button class="btn btn-ghost nav-toggle" aria-label="メニュー" aria-expanded="false">☰</button>
   </div>
 </header>
@@ -164,7 +164,7 @@
       </details>
       <details class="faq">
         <summary><span class="q">Q8</span>まず何から始めればいいですか？<span class="ic"></span></summary>
-        <div class="a">①デモ相談 → ②現場資料の共有 → ③プロトタイプ確認 → ④投資判断、の4ステップです。完璧な要件書は不要で、手元の資料からそのまま着手できます。まずは <strong>takeshi.ishida@takeside.co.jp</strong> までお気軽にご連絡ください。</div>
+        <div class="a">①無料相談（30分）→ ②手元の資料の共有 → ③プロトタイプの確認 → ④導入するかの判断、の4ステップです。完璧な要件書はいりません。まずは<a href="#contact">無料相談の予約</a>か<a href="#contact">フォーム</a>からご連絡ください。</div>
       </details>
     </div>
   </div>
@@ -177,66 +177,56 @@
       <div>
         <span class="eyebrow"><span class="idx">02</span>&nbsp;&nbsp;Contact</span>
         <h2 style="margin-top:18px;">まずは、動くものを見て判断してください。</h2>
-        <p class="lead">最初から完璧な要件はそろっていなくて当然です。現場資料や既存フォーマット、日々の運用情報を送るだけでも構いません。できること・概算・進め方を、率直にお返しします。</p>
+        <!-- 予約。話して決めたい人向けの入口。予約ページは Google カレンダーの予約スケジュール -->
+        <div class="cbook">
+          <h3 class="cb-title">話しながら決めたい方へ</h3>
+          <p class="cb-text">オンラインで30分。いまの作業の流れを聞かせてください。AIで減らせそうな作業と、プロトタイプの進め方を、その場でお伝えします。資料の準備はいりません。</p>
+          <a class="btn btn-primary cb-btn" id="cb-book" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2cwf1pSHmtPj2GKnBprV_JeadK1kNqDCPhiUn0WTrGW8DF6CZY1ZC_989tFxsOzMI3i6f59jqI" target="_blank" rel="noopener">空いている日時を見る<span class="arr">→</span></a>
+          <p class="cb-note">Google Meet で行います。相談したことで、契約を求めることはありません。</p>
+        </div>
       </div>
       <!--
-        GitHub Pages は静的ホスティングのため、サーバ側で受信する仕組みを持てない。
-        そのため送信は「入力内容からメール本文を組み立てて mailto を開く」方式にしている。
-        メールソフトが開かない環境でも詰まないよう、宛先アドレスとコピーボタンを常設。
-
-        外部フォームサービス（Formspree 等）を契約したら、この form タグに
-          action="https://formspree.io/f/xxxxxxx" method="POST"
-        を足し、下の JS の e.preventDefault() を外すだけで通常送信に切り替わる。
+        GitHub Pages は静的ホスティングで送信サーバを持てないため、
+        送信先は Apps Script のウェブアプリ（ソースは ../gas/contact_form）。
+        受けた内容はスプレッドシートに残り、石田へ通知メールが届く。
+        送れなかったときのために、宛先アドレスとコピーボタンを常設している。
       -->
       <form class="cform" id="contact-form" novalidate>
+        <h3 class="cb-title">文章で相談したい方へ</h3>
         <div class="cf-row">
           <label for="cf-name">お名前<span class="req">必須</span></label>
-          <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="山田 太郎" />
-        </div>
-        <div class="cf-row">
-          <label for="cf-company">会社名・屋号</label>
-          <input id="cf-company" name="company" type="text" autocomplete="organization" placeholder="任意" />
+          <input id="cf-name" name="name" type="text" required maxlength="100" autocomplete="name" placeholder="山田 太郎" />
         </div>
         <div class="cf-row">
           <label for="cf-email">メールアドレス<span class="req">必須</span></label>
-          <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" />
+          <input id="cf-email" name="email" type="email" required maxlength="254" autocomplete="email" placeholder="you@example.com" />
         </div>
         <div class="cf-row">
-          <label for="cf-topic">ご相談の種類</label>
-          <select id="cf-topic" name="topic">
-            <option>業務自動化の相談</option>
-            <option>プロトタイプを作りたい</option>
-            <option>料金・見積もりの相談</option>
-            <option>その他</option>
-          </select>
+          <label for="cf-body">困っていること<span class="req">必須</span></label>
+          <textarea id="cf-body" name="message" rows="4" required maxlength="5000" placeholder="入力例）月100件の請求書を手で作っていて、毎月40時間かかっています。Excel の台帳はあります。"></textarea>
         </div>
-        <div class="cf-row">
-          <label for="cf-body">ご相談内容<span class="req">必須</span></label>
-          <textarea id="cf-body" name="message" rows="4" required placeholder="例）月100件の請求書処理に毎月40時間かかっています。Excelの台帳はあります。"></textarea>
+        <!-- ボット対策。人には見えず、読み上げもされない欄。埋まっていたら受け口側で捨てる -->
+        <div class="cf-hp" aria-hidden="true">
+          <label for="cf-website">website</label>
+          <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off" />
         </div>
         <p class="cf-error" role="alert" hidden></p>
-
-        <!--
-          送信ボタンは button ではなく実体のある a にしている。
-          JSで生成したaを合成クリックして即 removeChild する方式だと、
-          Chrome の外部プロトコル起動が非同期のため起点要素が消えて破棄されることがある。
-          DOM に常駐する a の href を入力のたびに更新し、クリックはブラウザ既定の挙動に任せる。
-          JS が無効でも宛先だけは入った mailto として機能する。
-        -->
-        <a class="btn btn-primary cf-send" id="cf-send" href="mailto:takeshi.ishida@takeside.co.jp">メールアプリで開く<span class="arr">→</span></a>
-
-        <!-- メールアプリ未設定でブラウザの Gmail を使っている利用者向けの代替経路 -->
-        <a class="cf-alt" id="cf-gmail" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=takeshi.ishida@takeside.co.jp" target="_blank" rel="noopener">ブラウザの Gmail で開く</a>
-
-        <p class="cf-note">どちらも開かない場合は、下の「本文をコピー」でお使いのメールに貼り付けてお送りください。</p>
+        <!-- JS が動くまで押せないようにする。動かないまま押されると、入力内容が URL に載って送られるため -->
+        <button class="btn cf-send" id="cf-send" type="submit" disabled>送信する<span class="arr">→</span></button>
+        <noscript><p class="cf-note">JavaScript が無効のため、フォームは使えません。下のアドレスまで直接お送りください。</p></noscript>
+        <p class="cf-note">2営業日以内に、石田から返信します。</p>
         <div class="cf-fallback">
-          <code>takeshi.ishida@takeside.co.jp</code>
+          <p class="cf-note">フォームが使えないときは、takeshi.ishida@takeside.co.jp まで直接お送りください。</p>
           <span class="cf-acts">
             <button class="cf-copy" type="button" data-copy="mail">アドレスをコピー</button>
-            <button class="cf-copy" type="button" data-copy="body">本文をコピー</button>
           </span>
         </div>
       </form>
+      <!-- 送信後はフォームと入れ替える。role=status で読み上げにも完了を伝える -->
+      <div class="cf-done" id="cf-done" role="status" hidden>
+        <h3 class="cb-title">送信しました。</h3>
+        <p class="cf-note">2営業日以内に takeshi.ishida@takeside.co.jp からご返信します。届かないときは、迷惑メールのフォルダもご確認ください。</p>
+      </div>
     </div>
   </div>
 </section>
@@ -251,7 +241,7 @@
     </div>
 
     <div class="row-grid c4" style="margin-bottom:24px;">
-      <div class="cell"><span class="n">Step 01</span><h4>デモ相談</h4><p>手元の資料を起点に、まず話を聞かせてください。</p></div>
+      <div class="cell"><span class="n">Step 01</span><h4>無料相談</h4><p>オンラインで30分。手元の資料を起点に、まず話を聞かせてください。</p></div>
       <div class="cell"><span class="n">Step 02</span><h4>資料共有</h4><p>Excel・マニュアル・会話ログなど、あるものでOK。</p></div>
       <div class="cell"><span class="n">Step 03</span><h4>プロトタイプ確認</h4><p>触れる試作を見ながら、必要なものを具体化。</p></div>
       <div class="cell accent"><span class="n">Step 04</span><h4>投資判断</h4><p>続ける／広げる／やめるを、現物で決める。</p></div>
@@ -333,100 +323,103 @@
       });
     }
 
-    // ---- お問い合わせフォーム ----
-    // 静的ホスティングのため送信サーバを持てない。入力内容から本文を組み立て、
-    // (1) メールアプリ (2) ブラウザのGmail (3) クリップボード の3経路を用意する。
-    // 外部フォームサービスに切り替える場合は form に action/method を足し、この節を削除する。
+    // ---- お問い合わせ ----
+    // フォームは Apps Script のウェブアプリへ送る（ソースは ../gas/contact_form）。
+    // 本文は application/x-www-form-urlencoded にしてプリフライトを避ける。
+    // 応答は script.googleusercontent.com へのリダイレクト先から返り、そこが
+    // CORS を許可しているので JSON を読める（本番の URL で確認済み）。
+    var ENDPOINT = 'https://script.google.com/macros/s/AKfycbz52GrvjfCwQUbOXcsK6oOo1HEKVUn59krAW4EjSy2GysnMApjxLc4J9x0y6Cq1ovummw/exec';
+    var MAIL = 'takeshi.ishida@takeside.co.jp';
+    var openedAt = Date.now();
+
+    function track(name) { if (typeof gtag === 'function') gtag('event', name); }
+
+    var book = document.getElementById('cb-book');
+    if (book) book.addEventListener('click', function () { track('booking_click'); });
+
     var form = document.getElementById('contact-form');
     if (form) {
-      var MAIL = 'takeshi.ishida@takeside.co.jp';
       var err  = form.querySelector('.cf-error');
       var send = document.getElementById('cf-send');
-      var gmail = document.getElementById('cf-gmail');
+      var done = document.getElementById('cf-done');
 
       function val(id) { return (document.getElementById(id).value || '').trim(); }
-
-      function compose() {
-        var name = val('cf-name'), email = val('cf-email'), body = val('cf-body');
-        var company = val('cf-company'), topic = val('cf-topic');
-        var missing = [];
-        if (!name)  missing.push('お名前');
-        if (!email) missing.push('メールアドレス');
-        if (!body)  missing.push('ご相談内容');
-        var problem = null;
-        if (missing.length) problem = missing.join('・') + ' を入力してください。';
-        // 厳密判定はしない。打ち間違いの取りこぼしより、送れないほうが損失が大きい。
-        else if (email.indexOf('@') < 1 || email.indexOf('.', email.indexOf('@')) < 0)
-          problem = 'メールアドレスの形式をご確認ください。';
-
-        return {
-          problem: problem,
-          subject: '【お問い合わせ】' + topic + (name ? ' / ' + name : ''),
-          text: [
-            'お名前: ' + (name || ''),
-            '会社名・屋号: ' + (company || '（未記入）'),
-            'メールアドレス: ' + (email || ''),
-            'ご相談の種類: ' + topic,
-            '',
-            'ご相談内容:',
-            body || '',
-            '',
-            '---',
-            'takeside.co.jp のお問い合わせフォームより'
-          ].join('\n')
-        };
-      }
-
-      // 入力のたびにリンク先を更新しておく。クリック時に組み立てて遷移させるのではなく、
-      // 「最初から正しい href を持つリンク」をユーザーが踏む形にするのが最も確実。
-      function refresh() {
-        var c = compose();
-        var q = '?subject=' + encodeURIComponent(c.subject) + '&body=' + encodeURIComponent(c.text);
-        var mailto = 'mailto:' + MAIL + q;
-        // mailto が長すぎると環境によって切り捨てられるため、その場合は宛先だけにする
-        send.href = mailto.length > 1900 ? 'mailto:' + MAIL : mailto;
-        gmail.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(MAIL)
-                   + '&su=' + encodeURIComponent(c.subject) + '&body=' + encodeURIComponent(c.text);
-      }
-      form.addEventListener('input', refresh);
-      form.addEventListener('change', refresh);
-      refresh();
-
-      // 未入力のまま踏まれた場合だけ既定動作を止める
-      function guard(e) {
-        var c = compose();
-        if (c.problem) { e.preventDefault(); show(c.problem); return false; }
-        hide(); return true;
-      }
-      send.addEventListener('click', guard);
-      gmail.addEventListener('click', guard);
-
       function show(m) { err.textContent = m; err.hidden = false; }
       function hide() { err.textContent = ''; err.hidden = true; }
 
-      // クリップボード（メール経路が全滅した場合の最終手段）
+      send.disabled = false;
+
+      function check() {
+        var missing = [];
+        if (!val('cf-name'))  missing.push('お名前');
+        if (!val('cf-email')) missing.push('メールアドレス');
+        if (!val('cf-body'))  missing.push('困っていること');
+        if (missing.length) return missing.join('・') + ' を入力してください。';
+        // 厳密判定はしない。打ち間違いの取りこぼしより、送れないほうが損失が大きい
+        var email = val('cf-email');
+        if (email.indexOf('@') < 1 || email.indexOf('.', email.indexOf('@')) < 0)
+          return 'メールアドレスの形式をご確認ください。';
+        return null;
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var problem = check();
+        if (problem) { show(problem); return; }
+        hide();
+        send.disabled = true;
+        send.firstChild.textContent = '送信しています…';
+
+        var body = new URLSearchParams({
+          name: val('cf-name'),
+          email: val('cf-email'),
+          message: val('cf-body'),
+          website: document.getElementById('cf-website').value,
+          elapsed: String(Date.now() - openedAt),
+          page: location.pathname
+        });
+        // 応答が返らないまま待たせない。15秒で打ち切る
+        var ctrl = 'AbortController' in window ? new AbortController() : null;
+        var timer = ctrl && setTimeout(function () { ctrl.abort(); }, 15000);
+        fetch(ENDPOINT, { method: 'POST', body: body, signal: ctrl ? ctrl.signal : undefined })
+          .then(function (r) { return r.json(); })
+          .then(function (res) {
+            if (!res.ok) throw new Error(res.error || '');
+            track('generate_lead');
+            form.hidden = true;
+            done.hidden = false;
+            done.setAttribute('tabindex', '-1');
+            done.focus();
+          })
+          .catch(function (ex) {
+            // 受け口が返した理由（日本語）があればそれを出す。
+            // 通信の失敗・打ち切りは、届いたかどうか分からないので、その旨を正直に伝える
+            var msg = ex && ex.message && /[ぁ-んァ-ン一-龥]/.test(ex.message) ? ex.message
+              : '送信の結果を確認できませんでした。届いていない可能性があるため、お手数ですが下のアドレスへ直接お送りください（入力内容はそのまま残っています）。';
+            show(msg);
+            send.disabled = false;
+            send.firstChild.textContent = '送信する';
+          })
+          .then(function () { if (timer) clearTimeout(timer); });
+      });
+
       form.querySelectorAll('.cf-copy').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          var kind = btn.getAttribute('data-copy');
-          var c = compose();
-          if (kind === 'body' && c.problem) { show(c.problem); return; }
-          hide();
-          var text = kind === 'mail' ? MAIL : (c.subject + '\n\n' + c.text);
           var label = btn.textContent;
-          var done = function () {
+          var ok = function () {
             btn.textContent = 'コピーしました';
             setTimeout(function () { btn.textContent = label; }, 1800);
           };
           if (navigator.clipboard && window.isSecureContext) {
-            navigator.clipboard.writeText(text).then(done, legacy);
+            navigator.clipboard.writeText(MAIL).then(ok, legacy);
           } else { legacy(); }
           function legacy() {
             // http や古い環境で Clipboard API が使えない場合の退避
             var ta = document.createElement('textarea');
-            ta.value = text; ta.setAttribute('readonly', '');
+            ta.value = MAIL; ta.setAttribute('readonly', '');
             ta.style.cssText = 'position:absolute;left:-9999px';
             document.body.appendChild(ta); ta.select();
-            try { document.execCommand('copy'); done(); } catch (_) {}
+            try { document.execCommand('copy'); ok(); } catch (_) {}
             document.body.removeChild(ta);
           }
         });

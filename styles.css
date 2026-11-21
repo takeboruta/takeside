@@ -218,6 +218,8 @@ h1, h2, h3, h4, .h2 {
   margin-top: 26px;
 }
 .hero h1 .accent { display: inline; }
+/* 狭い画面で「…手作業をAI／で減らします」と割れないよう、後半をひとかたまりにする */
+.hero h1 .keep, h1 .keep, h2 .keep { display: inline-block; }
 .hero .lead { margin-top: 28px; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
 

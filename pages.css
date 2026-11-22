@@ -272,17 +272,21 @@
 .wd-pill.ai { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); color: var(--accent-2); background: color-mix(in srgb, var(--accent) 6%, transparent); }
 /* 実績ページ冒頭：企業の業務に入れたツールの一覧 */
 .tools { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-.tools li { border-bottom: 1px solid var(--line); }
-.tools a { display: grid; grid-template-columns: 220px 1fr auto; gap: 8px 32px; align-items: baseline; padding: 22px 4px; color: inherit; text-decoration: none; }
+.tools > li { border-bottom: 1px solid var(--line); }
+.tools a, .tools .tl-row { display: grid; grid-template-columns: 220px 1fr auto; gap: 8px 32px; align-items: baseline; padding: 22px 4px; color: inherit; text-decoration: none; }
 .tools a:hover .tl-job { color: var(--accent-2); }
 .tl-job { font-size: 16px; font-weight: 600; display: flex; flex-direction: column; gap: 4px; }
 .tl-name .keep { display: inline-block; }
 .tl-job small { font-size: 12px; font-weight: 400; color: var(--ink-3); }
 .tl-what { font-size: 14px; color: var(--ink-2); line-height: 1.75; }
+.tl-what { display: flex; flex-direction: column; gap: 10px; }
+.tl-tasks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; }
+.tl-tasks li { display: flex; gap: 10px; line-height: 1.6; }
+.tl-tasks li::before { content: ""; width: 5px; height: 5px; margin-top: 9px; flex: none; background: var(--accent); }
 .tl-state { font-size: 12px; font-weight: 600; color: var(--accent-2); border: 1px solid currentColor; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
 .tl-state.is-proto { color: var(--ink-3); }
 @media (max-width: 760px) {
-  .tools a { grid-template-columns: 1fr auto; }
+  .tools a, .tools .tl-row { grid-template-columns: 1fr auto; }
   .tl-what { grid-column: 1 / -1; grid-row: 2; }
 }
 /* 実績N：アプリの実画面を3枚並べる */

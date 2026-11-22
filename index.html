@@ -166,55 +166,30 @@
       </ul>
     </div>
 
-    <!-- pipeline diagram -->
-    <div class="pipe reveal">
-      <div class="pipe-head">
-        <span>workflow.automate</span>
-        <span class="pipe-dots"><i></i><i></i><i></i></span>
-      </div>
-      <div class="pipe-flow">
-        <div class="pipe-col">
-          <span class="col-label">人の手作業</span>
-          <div class="chip in"><span class="glyph"></span>採用業務</div>
-          <div class="chip in"><span class="glyph"></span>バックオフィス</div>
-          <div class="chip in"><span class="glyph"></span>開発・品質管理</div>
-        </div>
-        <div class="pipe-arrow" aria-hidden="true">
-          <svg viewBox="0 0 30 16"><line class="ln" x1="0" y1="8" x2="22" y2="8"/><path class="hd" d="M22 3l8 5-8 5z"/></svg>
-        </div>
-        <div class="pipe-node">
-          <span class="ring"><span class="pulse"></span><span class="core"></span></span>
-          <span class="nm">AIエージェント</span>
-          <span class="ev">agent.run()</span>
-        </div>
-      </div>
-      <div class="pipe-flow" style="margin-top:14px;">
-        <div class="pipe-reduce" aria-label="作業時間の比較イメージ。手作業に対し、AI導入後は作業時間を大幅に削減">
-          <span class="rd-label">作業時間の比較</span>
-          <div class="rd-row">
-            <span class="rd-k">人手</span>
-            <span class="rd-bar"><i class="rd-fill rd-manual" style="width:100%"></i></span>
-          </div>
-          <div class="rd-row">
-            <span class="rd-k">AI</span>
-            <span class="rd-bar"><i class="rd-fill rd-ai" style="width:12%"></i><span class="rd-cut">削減</span></span>
-          </div>
-        </div>
-        <div class="pipe-arrow" aria-hidden="true">
-          <svg viewBox="0 0 30 16"><line class="ln" x1="0" y1="8" x2="22" y2="8"/><path class="hd" d="M22 3l8 5-8 5z"/></svg>
-        </div>
-        <div class="pipe-col">
-          <span class="col-label">自動化された出力</span>
-          <div class="chip out"><span class="glyph"></span>求人〜候補者対応</div>
-          <div class="chip out"><span class="glyph"></span>経費・請求・FAQ</div>
-          <div class="chip out"><span class="glyph"></span>仕様×実装の突合</div>
-        </div>
-      </div>
-      <div class="pipe-foot">
-        <span class="stat">平均削減率 <b>約88%</b></span>
-        <span class="code">deploy: 最短 7 days</span>
-      </div>
-    </div>
+    <!-- 実績カード：作り物の図ではなく、実績ページの実測値とアプリの実画面を置く -->
+    <aside class="proof reveal" aria-label="実績の一部">
+      <p class="proof-head">実際につくったものの一部</p>
+      <ul class="proof-list">
+        <li><a href="works.html#work-a">
+          <span class="pf-k">求人広告の運用自動化</span>
+          <span class="pf-v">12,103件</span>
+          <span class="pf-n">40日間の本番運用で自動処理した件数</span>
+        </a></li>
+        <li><a href="works.html#work-b">
+          <span class="pf-k">求人票の作成</span>
+          <span class="pf-v">3〜5分</span>
+          <span class="pf-n">1件あたり。以前は30〜45分かかっていた作業</span>
+        </a></li>
+        <li class="proof-app"><a href="works.html#work-n">
+          <img src="img/works/golfscore-03-scorecard.jpg" width="478" height="1040" alt="ゴルフスコア手帳のスコアカード画面" />
+          <span class="pf-t">
+            <span class="pf-k">自社アプリ<span class="keep">「ゴルフスコア手帳」</span></span>
+            <span class="pf-n">2026年11月に App Store で公開。スコアとパットを記録するiPhoneアプリ</span>
+          </span>
+        </a></li>
+      </ul>
+      <p class="proof-note">社名は伏せています。詳しくは実績ページに載せています。</p>
+    </aside>
   </div>
 </section>
 
@@ -222,7 +197,6 @@
 <section class="section usecases" id="usecases">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow"><span class="idx">02</span>&nbsp;&nbsp;Use Cases</span>
       <h2 class="h2">AIに任せている作業の例</h2>
       <p class="lead">これまでに自動化した作業から、3つを挙げます。業種は問いません。</p>
     </div>
@@ -264,7 +238,6 @@
 <section class="section">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow"><span class="idx">03</span>&nbsp;&nbsp;Pain Points</span>
       <h2 class="h2">こんなときにご相談ください</h2>
       <p class="lead">AIの入れ方が分からない、いまのサービスでは手が届かない作業がある、といったご相談を受けています。立場ごとによく聞く内容を挙げます。</p>
     </div>
@@ -300,16 +273,15 @@
 <section class="section works-teaser" id="works">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow"><span class="idx">04</span>&nbsp;&nbsp;Works</span>
       <h2 class="h2">本番運用まで届けた実績</h2>
-      <p class="lead">試作で終わらず、お客さまの業務に導入した案件です。掲載している12件のうち、効果を数字で示せるものを載せました。社名は伏せ、一部は業種と規模で書いています。</p>
+      <p class="lead">試作で終わらず、お客さまの業務に導入した案件です。掲載している13件のうち、効果を数字で示せるものを載せました。社名は伏せ、一部は業種と規模で書いています。</p>
     </div>
 
     <!-- 実績の「総量」を先に置く。カード3枚だけだと“たまたま良い案件”に見えるため -->
     <div class="wk-figures reveal">
       <div class="wk-fig">
         <span class="k">掲載実績</span>
-        <span class="v">12<em>件</em></span>
+        <span class="v">13<em>件</em></span>
         <span class="s">業務自動化・プロトタイプ・AI顧問・自社プロダクト</span>
       </div>
       <div class="wk-fig">
@@ -379,7 +351,7 @@
       <span class="d">自社プロダクト</span>
     </div>
 
-    <a class="wk-all" href="works.html">実績12件をすべて見る →</a>
+    <a class="wk-all" href="works.html">実績13件をすべて見る →</a>
     <p class="wk-note">※実績Aの処理件数・判定結果は 2026/3/23〜5/1 の本番運用における実測値です。削減時間・処理スピード・金額は、導入前の手作業（1件3分）をもとにした換算・試算値であり、実際に同額の費用が減少したことを示すものではありません。効果は業務内容や導入環境により異なります。</p>
   </div>
 </section>
@@ -388,7 +360,6 @@
 <section class="section process" id="process">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow"><span class="idx">05</span>&nbsp;&nbsp;Process</span>
       <h2 class="h2">相談から試作までの流れ</h2>
       <p class="lead">まず作業の一部を試作します。実物を確かめてから、続けるかどうかを決められます。</p>
     </div>
@@ -424,7 +395,6 @@
 <section class="section about" id="about">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow"><span class="idx">06</span>&nbsp;&nbsp;About</span>
       <h2 class="h2">相談も開発も代表の石田が担当します</h2>
       <p class="lead">窓口から設計、実装まで、代表の石田がひとりで担当します。間に人が入らないので、相談した内容を担当者に説明し直す必要がありません。</p>
     </div>
@@ -447,7 +417,6 @@
 <section class="section pricing-teaser" id="pricing">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow"><span class="idx">07</span>&nbsp;&nbsp;Pricing</span>
       <h2 class="h2">料金の目安</h2>
       <p class="lead">1つだけ頼む定額のメニューと、規模に合わせた3つのプランがあります。</p>
     </div>
@@ -488,7 +457,6 @@
 <section class="section explore-band">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow"><span class="idx">08</span>&nbsp;&nbsp;Explore</span>
       <h2 class="h2">詳しく見る</h2>
       <p class="lead">必要なところから、各ページでご確認いただけます。</p>
     </div>
@@ -514,8 +482,7 @@
 <section class="cta-band" id="contact-cta">
   <div class="wrap cta-inner">
     <div>
-      <span class="eyebrow"><span class="idx">09</span>&nbsp;&nbsp;Get Started</span>
-      <h2 style="margin-top:18px;">30分、話すだけでも<br /><span class="keep">大丈夫です</span></h2>
+      <h2>30分、話すだけでも<br /><span class="keep">大丈夫です</span></h2>
       <p class="lead">何を頼めばいいか分からない段階からで構いません。ライトプラン以上は、プロトタイプ作成まで基本0円です。</p>
     </div>
     <div class="hero-cta">

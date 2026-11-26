@@ -463,36 +463,10 @@ h1, h2, h3, h4, .h2 {
 .proc-note { font-size: 12.5px; color: var(--ink-3); margin-top: 26px; }
 
 /* =========================================================================
-   ABOUT  (sunken band / 代表紹介)
-   ========================================================================= */
-.section.about { background: var(--paper-2); }
-.ab {
-  display: grid; grid-template-columns: minmax(200px, 0.8fr) minmax(0, 1.7fr);
-  gap: clamp(24px, 3vw, 52px);
-  background: var(--paper-3); border: 1px solid var(--line); border-radius: 8px;
-  padding: clamp(26px, 3vw, 44px);
-}
-.ab-role {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .18em;
-  text-transform: uppercase; color: var(--accent-2);
-}
-.ab-role::before { content: ""; width: 7px; height: 7px; background: var(--accent); flex: none; }
-.ab-name { font-size: clamp(24px, 2.4vw, 32px); margin-top: 12px; }
-.ab-name-en {
-  display: block; margin-top: 7px; font-family: var(--font-mono);
-  font-size: 12px; letter-spacing: .14em; color: var(--ink-3);
-}
-.ab-body p { margin: 0; font-size: var(--t-lead); line-height: 1.85; color: var(--ink-2); }
-/* .ab-body p より詳細度を上げないと注記までリード級(21px)で出てしまう */
-.ab-body .ab-note {
-  margin: 18px 0 0; padding-top: 16px; border-top: 1px dashed var(--line);
-  font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: var(--ink-3);
-}
-
-/* =========================================================================
    PRICING TEASER  (固定費プランの要約)
    ========================================================================= */
+/* 直前の Process（地色）と同色で隣り合わないよう、沈み側に置く */
+.section.pricing-teaser { background: var(--paper-2); }
 .pr-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 1.6vw, 22px); }
 .pr {
   position: relative; background: var(--paper-3); border: 1px solid var(--line);
@@ -541,8 +515,6 @@ a.pr:hover { border-color: var(--accent); }
 /* =========================================================================
    EXPLORE
    ========================================================================= */
-/* About を挟んだぶん、以降の明暗が同色で隣り合わないよう Explore を沈み側に回している */
-.section.explore-band { background: var(--paper-2); }
 .explore-list { border-top: 1px solid var(--line); }
 .exp {
   display: grid; grid-template-columns: 56px minmax(180px, 280px) 1fr auto; gap: 24px; align-items: center;

@@ -241,9 +241,6 @@ h1, h2, h3, h4, .h2 {
 .pf-k { font-size: 14px; font-weight: 600; }
 .pf-v { font-family: var(--font-en); font-size: clamp(18px, 1.9vw, 22px); font-weight: 600; color: var(--accent-2); white-space: nowrap; grid-row: span 2; text-align: right; }
 .pf-n { font-size: 12.5px; color: var(--ink-3); }
-.proof-app a { display: flex; gap: 16px; align-items: center; }
-.proof-app img { width: 72px; height: 112px; object-fit: cover; object-position: top; border-radius: 8px; border: 1px solid var(--line); flex: none; }
-.pf-t { display: flex; flex-direction: column; gap: 4px; }
 .pf-k .keep { display: inline-block; }
 .proof-note { font-size: 11.5px; color: var(--ink-3); margin: 6px 0 0; line-height: 1.6; }
 

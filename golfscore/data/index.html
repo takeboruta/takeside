@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>ゴルフスコア手帳 ゴルフ場データ（ODbL）</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; line-height: 1.8; max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; color: #1a1a1a; background: #fff; }
+  @media (prefers-color-scheme: dark) { body { color: #e8e8ea; background: #0b0b0f; } a { color: #8ab4ff; } }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.1rem; margin-top: 2em; border-bottom: 1px solid rgba(127,127,127,.3); padding-bottom: .3em; }
+  code { font-size: .9em; }
+</style>
+</head>
+<body>
+<h1>ゴルフスコア手帳 ゴルフ場データ</h1>
+<p>アプリ「ゴルフスコア手帳」に収録しているゴルフ場の一覧（名前・都道府県・中心の位置と範囲・一部のゴルフ場のホールごとの PAR）と、一部のゴルフ場のホールの位置（コース図に使う線）です。<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> のデータをもとに作成しています。</p>
+<p>OpenStreetMap のデータから、ゴルフ場（<code>leisure=golf_course</code>）の名前と範囲を取り出し、練習場等の除外、同じゴルフ場の重複のまとめ、範囲の中心点の計算、都道府県の付与、ホール（<code>golf=hole</code>）の番号と PAR の集計、ホールの線の点の間引き（許容 5m）を行って作成しています。</p>
+<p>ゴルフ場データ © OpenStreetMap contributors。このデータベースは <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License (ODbL) 1.0</a> のもとで提供します。</p>
+
+<h2>ファイル</h2>
+<p>アプリの各バージョンに収録したものと同じファイルです。</p>
+<ul>
+  <li>2026-11-27 作成（1,821 件。ホールの位置 44 件）: <a href="courses-2026-11-27.json">courses-2026-11-27.json</a> ／ <a href="courses-2026-11-27.meta.json">courses-2026-11-27.meta.json</a> ／ <a href="course-holes-2026-11-27.json">course-holes-2026-11-27.json</a></li>
+  <li>2026-11-22 作成（1,820 件）: <a href="courses-2026-11-22.json">courses-2026-11-22.json</a> ／ <a href="courses-2026-11-22.meta.json">courses-2026-11-22.meta.json</a></li>
+</ul>
+
+<h2>形式</h2>
+<p>JSON の配列で、1件ごとに <code>id</code>（OpenStreetMap の要素 ID。例: <code>way/123</code>）、<code>name</code>、<code>pref</code>（都道府県）、<code>lat</code>・<code>lng</code>（中心の緯度・経度）、<code>pars</code>（ホールごとの PAR）、<code>bbox</code>（範囲の [南, 西, 北, 東]。2026-11-27 版から）を持ちます。</p>
+<ul>
+  <li><code>pref</code> は OpenStreetMap の行政界から付けたもので、空のことがあります。県境をまたぐゴルフ場は、またぐ県のどちらかになります。</li>
+  <li><code>pars</code> は 9 または 18 ホールの番号と PAR がすべてそろうゴルフ場だけにあり、それ以外は項目がありません。</li>
+  <li><code>lat</code>・<code>lng</code> はゴルフ場の範囲から計算した点で、クラブハウスなどの位置ではありません。</li>
+</ul>
+<p><code>course-holes-*.json</code> は、ゴルフ場の <code>id</code> をキーにしたオブジェクトで、<code>holes</code>（9 または 18）、<code>lines</code>（1 番ホールから順に、[緯度, 経度] の点の並び）、<code>area</code>（ホールが線でなく範囲の囲みで登録されている場合だけ <code>true</code>）を持ちます。</p>
+<ul>
+  <li>9 または 18 のホールがすべて線か囲みで登録され、番号がそろうゴルフ場だけを収録しています。</li>
+  <li>線の点の順は OpenStreetMap の登録のままです（決まりではティーからグリーンの順ですが、逆向きの登録もあります）。</li>
+</ul>
+
+<h2>提供元</h2>
+<p>テイクサイド株式会社（<a href="https://takeside.co.jp/golfscore/support.html">サポート</a>）</p>
+</body>
+</html>
